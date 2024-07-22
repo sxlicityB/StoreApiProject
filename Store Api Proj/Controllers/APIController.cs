@@ -10,8 +10,9 @@ namespace Store_Api_Proj.Controllers
     [Route("api/[controller]/[action]")]
     public class APIController : ControllerBase
     {
-        private readonly AppDbContext _context;
         private readonly IOrder _orderRepository;
+        private readonly IBuyer _buyerRepository;
+        private readonly IProduct _productRepository;
 
 
         // Get endpoints
@@ -29,6 +30,30 @@ namespace Store_Api_Proj.Controllers
 
             return Ok(orders);
         }
+
+        [HttpGet]
+        public IActionResult GetBuyers()
+        {
+            var buyers = _buyerRepository.GetBuyers();
+
+            if (!ModelState.IsValid)
+                return BadRequest(ModelState);
+
+            return Ok(buyers);
+        }
+
+        [HttpGet]
+        public IActionResult GetProduct()
+        {
+            var products = _productRepository.GetProducts();
+
+            if (!ModelState.IsValid)
+                return BadRequest(ModelState);
+
+            return Ok(products);
+        }
+
+
         /*public ActionResult Index()
         {
 
@@ -96,6 +121,6 @@ namespace Store_Api_Proj.Controllers
                 return Ok(_context.Orders);
             }*/
 
-    
+
     }
 }
