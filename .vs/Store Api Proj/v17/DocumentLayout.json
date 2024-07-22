@@ -1,0 +1,381 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\prog\\Store Api Proj\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{C7BE68B0-DD03-4A99-A65C-0D9C616E9F6F}|Store Api Proj\\Store Api Proj.csproj|c:\\prog\\store api proj\\store api proj\\interfaces\\ibuyer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C7BE68B0-DD03-4A99-A65C-0D9C616E9F6F}|Store Api Proj\\Store Api Proj.csproj|solutionrelative:store api proj\\interfaces\\ibuyer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C7BE68B0-DD03-4A99-A65C-0D9C616E9F6F}|Store Api Proj\\Store Api Proj.csproj|c:\\prog\\store api proj\\store api proj\\interfaces\\iorder.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C7BE68B0-DD03-4A99-A65C-0D9C616E9F6F}|Store Api Proj\\Store Api Proj.csproj|solutionrelative:store api proj\\interfaces\\iorder.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C7BE68B0-DD03-4A99-A65C-0D9C616E9F6F}|Store Api Proj\\Store Api Proj.csproj|c:\\prog\\store api proj\\store api proj\\repository\\buyerrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C7BE68B0-DD03-4A99-A65C-0D9C616E9F6F}|Store Api Proj\\Store Api Proj.csproj|solutionrelative:store api proj\\repository\\buyerrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C7BE68B0-DD03-4A99-A65C-0D9C616E9F6F}|Store Api Proj\\Store Api Proj.csproj|c:\\prog\\store api proj\\store api proj\\repository\\orderrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C7BE68B0-DD03-4A99-A65C-0D9C616E9F6F}|Store Api Proj\\Store Api Proj.csproj|solutionrelative:store api proj\\repository\\orderrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C7BE68B0-DD03-4A99-A65C-0D9C616E9F6F}|Store Api Proj\\Store Api Proj.csproj|c:\\prog\\store api proj\\store api proj\\controllers\\apicontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C7BE68B0-DD03-4A99-A65C-0D9C616E9F6F}|Store Api Proj\\Store Api Proj.csproj|solutionrelative:store api proj\\controllers\\apicontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C7BE68B0-DD03-4A99-A65C-0D9C616E9F6F}|Store Api Proj\\Store Api Proj.csproj|c:\\prog\\store api proj\\store api proj\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C7BE68B0-DD03-4A99-A65C-0D9C616E9F6F}|Store Api Proj\\Store Api Proj.csproj|solutionrelative:store api proj\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C7BE68B0-DD03-4A99-A65C-0D9C616E9F6F}|Store Api Proj\\Store Api Proj.csproj|c:\\prog\\store api proj\\store api proj\\data\\appdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C7BE68B0-DD03-4A99-A65C-0D9C616E9F6F}|Store Api Proj\\Store Api Proj.csproj|solutionrelative:store api proj\\data\\appdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C7BE68B0-DD03-4A99-A65C-0D9C616E9F6F}|Store Api Proj\\Store Api Proj.csproj|c:\\prog\\store api proj\\store api proj\\models\\order.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C7BE68B0-DD03-4A99-A65C-0D9C616E9F6F}|Store Api Proj\\Store Api Proj.csproj|solutionrelative:store api proj\\models\\order.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C7BE68B0-DD03-4A99-A65C-0D9C616E9F6F}|Store Api Proj\\Store Api Proj.csproj|c:\\prog\\store api proj\\store api proj\\models\\buyer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C7BE68B0-DD03-4A99-A65C-0D9C616E9F6F}|Store Api Proj\\Store Api Proj.csproj|solutionrelative:store api proj\\models\\buyer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C7BE68B0-DD03-4A99-A65C-0D9C616E9F6F}|Store Api Proj\\Store Api Proj.csproj|c:\\prog\\store api proj\\store api proj\\models\\product.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C7BE68B0-DD03-4A99-A65C-0D9C616E9F6F}|Store Api Proj\\Store Api Proj.csproj|solutionrelative:store api proj\\models\\product.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C7BE68B0-DD03-4A99-A65C-0D9C616E9F6F}|Store Api Proj\\Store Api Proj.csproj|c:\\prog\\store api proj\\store api proj\\models\\orderproduct.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C7BE68B0-DD03-4A99-A65C-0D9C616E9F6F}|Store Api Proj\\Store Api Proj.csproj|solutionrelative:store api proj\\models\\orderproduct.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C7BE68B0-DD03-4A99-A65C-0D9C616E9F6F}|Store Api Proj\\Store Api Proj.csproj|c:\\prog\\store api proj\\store api proj\\migrations\\20240710182814_fixes.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C7BE68B0-DD03-4A99-A65C-0D9C616E9F6F}|Store Api Proj\\Store Api Proj.csproj|solutionrelative:store api proj\\migrations\\20240710182814_fixes.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C7BE68B0-DD03-4A99-A65C-0D9C616E9F6F}|Store Api Proj\\Store Api Proj.csproj|c:\\prog\\store api proj\\store api proj\\migrations\\20240709212037_initialcreate.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C7BE68B0-DD03-4A99-A65C-0D9C616E9F6F}|Store Api Proj\\Store Api Proj.csproj|solutionrelative:store api proj\\migrations\\20240709212037_initialcreate.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C7BE68B0-DD03-4A99-A65C-0D9C616E9F6F}|Store Api Proj\\Store Api Proj.csproj|c:\\prog\\store api proj\\store api proj\\migrations\\20240709212943_updatedmigration.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C7BE68B0-DD03-4A99-A65C-0D9C616E9F6F}|Store Api Proj\\Store Api Proj.csproj|solutionrelative:store api proj\\migrations\\20240709212943_updatedmigration.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C7BE68B0-DD03-4A99-A65C-0D9C616E9F6F}|Store Api Proj\\Store Api Proj.csproj|c:\\prog\\store api proj\\store api proj\\dtos\\createorderrequest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C7BE68B0-DD03-4A99-A65C-0D9C616E9F6F}|Store Api Proj\\Store Api Proj.csproj|solutionrelative:store api proj\\dtos\\createorderrequest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C7BE68B0-DD03-4A99-A65C-0D9C616E9F6F}|Store Api Proj\\Store Api Proj.csproj|c:\\prog\\store api proj\\store api proj\\migrations\\20240709213400_addednewcolumn.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C7BE68B0-DD03-4A99-A65C-0D9C616E9F6F}|Store Api Proj\\Store Api Proj.csproj|solutionrelative:store api proj\\migrations\\20240709213400_addednewcolumn.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C7BE68B0-DD03-4A99-A65C-0D9C616E9F6F}|Store Api Proj\\Store Api Proj.csproj|c:\\prog\\store api proj\\store api proj\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{C7BE68B0-DD03-4A99-A65C-0D9C616E9F6F}|Store Api Proj\\Store Api Proj.csproj|solutionrelative:store api proj\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C7BE68B0-DD03-4A99-A65C-0D9C616E9F6F}|Store Api Proj\\Store Api Proj.csproj|c:\\prog\\store api proj\\store api proj\\store api proj.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
+      "RelativeMoniker": "D:0:0:{C7BE68B0-DD03-4A99-A65C-0D9C616E9F6F}|Store Api Proj\\Store Api Proj.csproj|solutionrelative:store api proj\\store api proj.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C7BE68B0-DD03-4A99-A65C-0D9C616E9F6F}|Store Api Proj\\Store Api Proj.csproj|c:\\prog\\store api proj\\store api proj\\migrations\\20240714014953_onmodeltest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C7BE68B0-DD03-4A99-A65C-0D9C616E9F6F}|Store Api Proj\\Store Api Proj.csproj|solutionrelative:store api proj\\migrations\\20240714014953_onmodeltest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C7BE68B0-DD03-4A99-A65C-0D9C616E9F6F}|Store Api Proj\\Store Api Proj.csproj|c:\\prog\\store api proj\\store api proj\\migrations\\20240717062725_efcorefixes2.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C7BE68B0-DD03-4A99-A65C-0D9C616E9F6F}|Store Api Proj\\Store Api Proj.csproj|solutionrelative:store api proj\\migrations\\20240717062725_efcorefixes2.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C7BE68B0-DD03-4A99-A65C-0D9C616E9F6F}|Store Api Proj\\Store Api Proj.csproj|c:\\prog\\store api proj\\store api proj\\migrations\\20240717055718_efcorefixes.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C7BE68B0-DD03-4A99-A65C-0D9C616E9F6F}|Store Api Proj\\Store Api Proj.csproj|solutionrelative:store api proj\\migrations\\20240717055718_efcorefixes.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C7BE68B0-DD03-4A99-A65C-0D9C616E9F6F}|Store Api Proj\\Store Api Proj.csproj|c:\\prog\\store api proj\\store api proj\\migrations\\20240722033206_dbupdate.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C7BE68B0-DD03-4A99-A65C-0D9C616E9F6F}|Store Api Proj\\Store Api Proj.csproj|solutionrelative:store api proj\\migrations\\20240722033206_dbupdate.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 1,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "BuyerRepository.cs",
+              "DocumentMoniker": "C:\\prog\\Store Api Proj\\Store Api Proj\\Repository\\BuyerRepository.cs",
+              "RelativeDocumentMoniker": "Store Api Proj\\Repository\\BuyerRepository.cs",
+              "ToolTip": "C:\\prog\\Store Api Proj\\Store Api Proj\\Repository\\BuyerRepository.cs",
+              "RelativeToolTip": "Store Api Proj\\Repository\\BuyerRepository.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABEAAABEAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-07-22T04:55:10.699Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "IBuyer.cs",
+              "DocumentMoniker": "C:\\prog\\Store Api Proj\\Store Api Proj\\Interfaces\\IBuyer.cs",
+              "RelativeDocumentMoniker": "Store Api Proj\\Interfaces\\IBuyer.cs",
+              "ToolTip": "C:\\prog\\Store Api Proj\\Store Api Proj\\Interfaces\\IBuyer.cs",
+              "RelativeToolTip": "Store Api Proj\\Interfaces\\IBuyer.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAYAAAAnAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-07-22T04:54:15.461Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "OrderRepository.cs",
+              "DocumentMoniker": "C:\\prog\\Store Api Proj\\Store Api Proj\\Repository\\OrderRepository.cs",
+              "RelativeDocumentMoniker": "Store Api Proj\\Repository\\OrderRepository.cs",
+              "ToolTip": "C:\\prog\\Store Api Proj\\Store Api Proj\\Repository\\OrderRepository.cs",
+              "RelativeToolTip": "Store Api Proj\\Repository\\OrderRepository.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABEAAAAMAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-07-22T04:32:21.196Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "IOrder.cs",
+              "DocumentMoniker": "C:\\prog\\Store Api Proj\\Store Api Proj\\Interfaces\\IOrder.cs",
+              "RelativeDocumentMoniker": "Store Api Proj\\Interfaces\\IOrder.cs",
+              "ToolTip": "C:\\prog\\Store Api Proj\\Store Api Proj\\Interfaces\\IOrder.cs",
+              "RelativeToolTip": "Store Api Proj\\Interfaces\\IOrder.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAUAAAAjAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-07-22T04:28:34.993Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "Order.cs",
+              "DocumentMoniker": "C:\\prog\\Store Api Proj\\Store Api Proj\\Models\\Order.cs",
+              "RelativeDocumentMoniker": "Store Api Proj\\Models\\Order.cs",
+              "ToolTip": "C:\\prog\\Store Api Proj\\Store Api Proj\\Models\\Order.cs",
+              "RelativeToolTip": "Store Api Proj\\Models\\Order.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAqwAYAAAARAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-07-09T18:57:01.485Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "Buyer.cs",
+              "DocumentMoniker": "C:\\prog\\Store Api Proj\\Store Api Proj\\Models\\Buyer.cs",
+              "RelativeDocumentMoniker": "Store Api Proj\\Models\\Buyer.cs",
+              "ToolTip": "C:\\prog\\Store Api Proj\\Store Api Proj\\Models\\Buyer.cs",
+              "RelativeToolTip": "Store Api Proj\\Models\\Buyer.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAYAAAAgAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-07-09T18:55:07.492Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "Product.cs",
+              "DocumentMoniker": "C:\\prog\\Store Api Proj\\Store Api Proj\\Models\\Product.cs",
+              "RelativeDocumentMoniker": "Store Api Proj\\Models\\Product.cs",
+              "ToolTip": "C:\\prog\\Store Api Proj\\Store Api Proj\\Models\\Product.cs",
+              "RelativeToolTip": "Store Api Proj\\Models\\Product.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAqwAoAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-07-09T18:52:52.409Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 12,
+              "Title": "20240709212037_InitialCreate.cs",
+              "DocumentMoniker": "C:\\prog\\Store Api Proj\\Store Api Proj\\Migrations\\20240709212037_InitialCreate.cs",
+              "RelativeDocumentMoniker": "Store Api Proj\\Migrations\\20240709212037_InitialCreate.cs",
+              "ToolTip": "C:\\prog\\Store Api Proj\\Store Api Proj\\Migrations\\20240709212037_InitialCreate.cs",
+              "RelativeToolTip": "Store Api Proj\\Migrations\\20240709212037_InitialCreate.cs",
+              "ViewState": "AQIAAAMAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-07-09T21:20:37.665Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
+              "Title": "20240710182814_Fixes.cs",
+              "DocumentMoniker": "C:\\prog\\Store Api Proj\\Store Api Proj\\Migrations\\20240710182814_Fixes.cs",
+              "RelativeDocumentMoniker": "Store Api Proj\\Migrations\\20240710182814_Fixes.cs",
+              "ToolTip": "C:\\prog\\Store Api Proj\\Store Api Proj\\Migrations\\20240710182814_Fixes.cs",
+              "RelativeToolTip": "Store Api Proj\\Migrations\\20240710182814_Fixes.cs",
+              "ViewState": "AQIAABkAAAAAAAAAAAAgwBIAAAAgAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-07-10T18:28:14.958Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 17,
+              "Title": "Store Api Proj.csproj",
+              "DocumentMoniker": "C:\\prog\\Store Api Proj\\Store Api Proj\\Store Api Proj.csproj",
+              "RelativeDocumentMoniker": "Store Api Proj\\Store Api Proj.csproj",
+              "ToolTip": "C:\\prog\\Store Api Proj\\Store Api Proj\\Store Api Proj.csproj",
+              "RelativeToolTip": "Store Api Proj\\Store Api Proj.csproj",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
+              "WhenOpened": "2024-07-09T20:45:22.747Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "APIController.cs",
+              "DocumentMoniker": "C:\\prog\\Store Api Proj\\Store Api Proj\\Controllers\\APIController.cs",
+              "RelativeDocumentMoniker": "Store Api Proj\\Controllers\\APIController.cs",
+              "ToolTip": "C:\\prog\\Store Api Proj\\Store Api Proj\\Controllers\\APIController.cs",
+              "RelativeToolTip": "Store Api Proj\\Controllers\\APIController.cs",
+              "ViewState": "AQIAAAMAAAAAAAAAAAAAwBwAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-07-09T18:52:02.156Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "AppDbContext.cs",
+              "DocumentMoniker": "C:\\prog\\Store Api Proj\\Store Api Proj\\Data\\AppDbContext.cs",
+              "RelativeDocumentMoniker": "Store Api Proj\\Data\\AppDbContext.cs",
+              "ToolTip": "C:\\prog\\Store Api Proj\\Store Api Proj\\Data\\AppDbContext.cs",
+              "RelativeToolTip": "Store Api Proj\\Data\\AppDbContext.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAqwAQAAAARAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-07-09T20:45:59.953Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\prog\\Store Api Proj\\Store Api Proj\\Program.cs",
+              "RelativeDocumentMoniker": "Store Api Proj\\Program.cs",
+              "ToolTip": "C:\\prog\\Store Api Proj\\Store Api Proj\\Program.cs",
+              "RelativeToolTip": "Store Api Proj\\Program.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAkAAAA2AAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-07-09T21:17:03.594Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 21,
+              "Title": "20240722033206_DbUpdate.cs",
+              "DocumentMoniker": "C:\\prog\\Store Api Proj\\Store Api Proj\\Migrations\\20240722033206_DbUpdate.cs",
+              "RelativeDocumentMoniker": "Store Api Proj\\Migrations\\20240722033206_DbUpdate.cs",
+              "ToolTip": "C:\\prog\\Store Api Proj\\Store Api Proj\\Migrations\\20240722033206_DbUpdate.cs",
+              "RelativeToolTip": "Store Api Proj\\Migrations\\20240722033206_DbUpdate.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-07-22T03:32:06.732Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 13,
+              "Title": "20240709212943_UpdatedMigration.cs",
+              "DocumentMoniker": "C:\\prog\\Store Api Proj\\Store Api Proj\\Migrations\\20240709212943_UpdatedMigration.cs",
+              "RelativeDocumentMoniker": "Store Api Proj\\Migrations\\20240709212943_UpdatedMigration.cs",
+              "ToolTip": "C:\\prog\\Store Api Proj\\Store Api Proj\\Migrations\\20240709212943_UpdatedMigration.cs",
+              "RelativeToolTip": "Store Api Proj\\Migrations\\20240709212943_UpdatedMigration.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-07-09T21:29:43.538Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "OrderProduct.cs",
+              "DocumentMoniker": "C:\\prog\\Store Api Proj\\Store Api Proj\\Models\\OrderProduct.cs",
+              "RelativeDocumentMoniker": "Store Api Proj\\Models\\OrderProduct.cs",
+              "ToolTip": "C:\\prog\\Store Api Proj\\Store Api Proj\\Models\\OrderProduct.cs",
+              "RelativeToolTip": "Store Api Proj\\Models\\OrderProduct.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAqwAgAAAAXAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-07-17T05:54:43.602Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 14,
+              "Title": "CreateOrderRequest.cs",
+              "DocumentMoniker": "C:\\prog\\Store Api Proj\\Store Api Proj\\DTOs\\CreateOrderRequest.cs",
+              "RelativeDocumentMoniker": "Store Api Proj\\DTOs\\CreateOrderRequest.cs",
+              "ToolTip": "C:\\prog\\Store Api Proj\\Store Api Proj\\DTOs\\CreateOrderRequest.cs",
+              "RelativeToolTip": "Store Api Proj\\DTOs\\CreateOrderRequest.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAkAAAAiAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-07-10T19:28:54.506Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 16,
+              "Title": "appsettings.json",
+              "DocumentMoniker": "C:\\prog\\Store Api Proj\\Store Api Proj\\appsettings.json",
+              "RelativeDocumentMoniker": "Store Api Proj\\appsettings.json",
+              "ToolTip": "C:\\prog\\Store Api Proj\\Store Api Proj\\appsettings.json",
+              "RelativeToolTip": "Store Api Proj\\appsettings.json",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAIAAABaAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2024-07-09T21:19:30.891Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 19,
+              "Title": "20240717062725_EfCoreFixes2.cs",
+              "DocumentMoniker": "C:\\prog\\Store Api Proj\\Store Api Proj\\Migrations\\20240717062725_EfCoreFixes2.cs",
+              "RelativeDocumentMoniker": "Store Api Proj\\Migrations\\20240717062725_EfCoreFixes2.cs",
+              "ToolTip": "C:\\prog\\Store Api Proj\\Store Api Proj\\Migrations\\20240717062725_EfCoreFixes2.cs",
+              "RelativeToolTip": "Store Api Proj\\Migrations\\20240717062725_EfCoreFixes2.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-07-17T06:27:25.539Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 20,
+              "Title": "20240717055718_EfCoreFixes.cs",
+              "DocumentMoniker": "C:\\prog\\Store Api Proj\\Store Api Proj\\Migrations\\20240717055718_EfCoreFixes.cs",
+              "RelativeDocumentMoniker": "Store Api Proj\\Migrations\\20240717055718_EfCoreFixes.cs",
+              "ToolTip": "C:\\prog\\Store Api Proj\\Store Api Proj\\Migrations\\20240717055718_EfCoreFixes.cs",
+              "RelativeToolTip": "Store Api Proj\\Migrations\\20240717055718_EfCoreFixes.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-07-17T05:57:18.463Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 18,
+              "Title": "20240714014953_OnModelTest.cs",
+              "DocumentMoniker": "C:\\prog\\Store Api Proj\\Store Api Proj\\Migrations\\20240714014953_OnModelTest.cs",
+              "RelativeDocumentMoniker": "Store Api Proj\\Migrations\\20240714014953_OnModelTest.cs",
+              "ToolTip": "C:\\prog\\Store Api Proj\\Store Api Proj\\Migrations\\20240714014953_OnModelTest.cs",
+              "RelativeToolTip": "Store Api Proj\\Migrations\\20240714014953_OnModelTest.cs",
+              "ViewState": "AQIAAAsAAAAAAAAAAAAQwAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-07-14T01:49:54.109Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 15,
+              "Title": "20240709213400_AddedNewColumn.cs",
+              "DocumentMoniker": "C:\\prog\\Store Api Proj\\Store Api Proj\\Migrations\\20240709213400_AddedNewColumn.cs",
+              "RelativeDocumentMoniker": "Store Api Proj\\Migrations\\20240709213400_AddedNewColumn.cs",
+              "ToolTip": "C:\\prog\\Store Api Proj\\Store Api Proj\\Migrations\\20240709213400_AddedNewColumn.cs",
+              "RelativeToolTip": "Store Api Proj\\Migrations\\20240709213400_AddedNewColumn.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-07-09T21:34:01.098Z"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
