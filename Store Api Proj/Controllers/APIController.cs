@@ -14,11 +14,19 @@ namespace Store_Api_Proj.Controllers
         private readonly IBuyer _buyerRepository;
         private readonly IProduct _productRepository;
 
-
-        // Get endpoints
         public APIController(IOrder OrderRepository) {
             this._orderRepository = OrderRepository;
         }
+        public APIController(IBuyer BuyerRepository)
+        {
+            this._buyerRepository = BuyerRepository;
+        }
+        public APIController(IProduct ProductRepository)
+        {
+            this._productRepository = ProductRepository;
+        }
+
+        // Get endpoints
 
         [HttpGet]
         public IActionResult GetOrders()
