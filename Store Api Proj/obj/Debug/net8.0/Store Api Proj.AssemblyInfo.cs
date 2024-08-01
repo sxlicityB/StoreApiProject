@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("Store Api Proj")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+7e78d5f67b01a62934f4adb21e998305329ba2f8")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+fdd90982df4b7419ceda4d0a6cbd2d325948bad3")]
 [assembly: System.Reflection.AssemblyProductAttribute("Store Api Proj")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Store Api Proj")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

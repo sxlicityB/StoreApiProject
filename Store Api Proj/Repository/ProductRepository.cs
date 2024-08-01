@@ -16,5 +16,9 @@ namespace Store_Api_Proj.Repository
         {
             return _context.Products.OrderBy(x => x.ProductId).ToList();
         }
+        public Product GetProductById(int id) 
+        {
+            return _context.Products.FirstOrDefault(p => p.ProductId == id);
+        }
     }
 }
