@@ -3,6 +3,7 @@ using Store_Api_Proj.Data;
 using Store_Api_Proj.Models;
 using Microsoft.EntityFrameworkCore;
 using Store_Api_Proj.Interfaces;
+using Store_Api_Proj.Repository;
 
 namespace Store_Api_Proj.Controllers
 {
@@ -14,7 +15,8 @@ namespace Store_Api_Proj.Controllers
         private readonly IBuyer _buyerRepository;
         private readonly IProduct _productRepository;
 
-        public APIController(IOrder OrderRepository) {
+        public APIController(IOrder OrderRepository)
+        {
             this._orderRepository = OrderRepository;
         }
         public APIController(IBuyer BuyerRepository)
@@ -59,6 +61,13 @@ namespace Store_Api_Proj.Controllers
                 return BadRequest(ModelState);
 
             return Ok(products);
+        }
+
+        [HttpGet("{OrderId}")]
+        public IActionResult GetOrder(int OrderId)
+        {
+            var order = _orderRepository.GetOrder(OrderId);
+            return Ok(order);
         }
 
 

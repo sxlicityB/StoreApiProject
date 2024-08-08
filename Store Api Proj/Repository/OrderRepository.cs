@@ -17,7 +17,7 @@ namespace Store_Api_Proj.Repository
         {
             return _context.Orders.OrderBy(o => o.OrderId).ToList();
         }
-        public Order GetOrderById(int id)
+        public Order GetOrder(int id)
         {
             return _context.Orders.FirstOrDefault(o => o.OrderId == id);
         }

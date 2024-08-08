@@ -7,7 +7,7 @@ namespace Store_Api_Proj.DTOs
     {
         public int OrderId { get; set; }
         public Buyer? Buyer { get; set; }
-        public List<int> ProductId { get; set; }
+        public List<OrderProduct> OrderProducts { get; set; }
         public OrderStatus Status { get; set; } = OrderStatus.Pending;
         public decimal TotalPrice { get; set; }
     }
