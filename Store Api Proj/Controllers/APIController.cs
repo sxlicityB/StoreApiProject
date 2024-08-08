@@ -4,6 +4,8 @@ using Store_Api_Proj.Models;
 using Microsoft.EntityFrameworkCore;
 using Store_Api_Proj.Interfaces;
 using Store_Api_Proj.Repository;
+using AutoMapper;
+using Store_Api_Proj.DTOs;
 
 namespace Store_Api_Proj.Controllers
 {
@@ -14,18 +16,12 @@ namespace Store_Api_Proj.Controllers
         private readonly IOrder _orderRepository;
         private readonly IBuyer _buyerRepository;
         private readonly IProduct _productRepository;
+        private readonly IMapper _mapper;
 
-        public APIController(IOrder OrderRepository)
+        public APIController(IOrder OrderRepository, IMapper mapper)
         {
             this._orderRepository = OrderRepository;
-        }
-        public APIController(IBuyer BuyerRepository)
-        {
-            this._buyerRepository = BuyerRepository;
-        }
-        public APIController(IProduct ProductRepository)
-        {
-            this._productRepository = ProductRepository;
+            _mapper = mapper;
         }
 
         // Get endpoints
@@ -33,7 +29,7 @@ namespace Store_Api_Proj.Controllers
         [HttpGet]
         public IActionResult GetOrders()
         {
-            var orders = _orderRepository.GetOrders();
+            var orders = _mapper.Map<List<CreateOrderRequest>>(_orderRepository.GetOrders());
 
             if (!ModelState.IsValid)
                 return BadRequest(ModelState);
@@ -66,7 +62,7 @@ namespace Store_Api_Proj.Controllers
         [HttpGet("{OrderId}")]
         public IActionResult GetOrder(int OrderId)
         {
-            var order = _orderRepository.GetOrder(OrderId);
+            var order = _mapper.Map<CreateOrderRequest>(_orderRepository.GetOrder(OrderId));
             return Ok(order);
         }
 

@@ -1,13 +1,19 @@
+using Microsoft.AspNetCore.Hosting;
 using Microsoft.EntityFrameworkCore;
+using Store_Api_Proj.AutoMappers;
 using Store_Api_Proj.Data;
 using Store_Api_Proj.Interfaces;
 using Store_Api_Proj.Repository;
+using AutoMapper;
+using Microsoft.Extensions.DependencyInjection;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllers();
 builder.Services.AddScoped<IOrder, OrderRepository>();
+builder.Services.AddAutoMapper(typeof(Startup));
+
 
 builder.Services.AddDbContext<AppDbContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
