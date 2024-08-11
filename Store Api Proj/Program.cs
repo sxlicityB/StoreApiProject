@@ -12,7 +12,23 @@ var builder = WebApplication.CreateBuilder(args);
 // Add services to the container.
 builder.Services.AddControllers();
 builder.Services.AddScoped<IOrder, OrderRepository>();
-builder.Services.AddAutoMapper(typeof(Startup));
+//builder.Services.AddAutoMapper(typeof(IMapper));
+void ConfigureServices(IServiceCollection services)
+{
+    // .... Ignore code before this
+
+    // Auto Mapper Configurations
+    var mappingConfig = new MapperConfiguration(mc =>
+    {
+        mc.AddProfile(new MappingProfiles());
+    });
+
+    IMapper mapper = mappingConfig.CreateMapper();
+    services.AddSingleton(mapper);
+
+    services.AddMvc();
+
+}
 
 
 builder.Services.AddDbContext<AppDbContext>(options =>
