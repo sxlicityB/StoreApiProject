@@ -12,7 +12,9 @@ var builder = WebApplication.CreateBuilder(args);
 // Add services to the container.
 builder.Services.AddControllers();
 builder.Services.AddScoped<IOrder, OrderRepository>();
-//builder.Services.AddAutoMapper(typeof(IMapper));
+builder.Services.AddScoped<IBuyer, BuyerRepository>();
+builder.Services.AddScoped<IProduct, ProductRepository>();
+builder.Services.AddAutoMapper(typeof(MappingProfiles));
 void ConfigureServices(IServiceCollection services)
 {
     // .... Ignore code before this
@@ -37,8 +39,23 @@ builder.Services.AddDbContext<AppDbContext>(options =>
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+builder.Services.AddTransient<SeedData>();
 
 var app = builder.Build();
+
+if (args.Length == 1 && args[0].ToLower() == "seeddata")
+    SeedData(app);
+
+void SeedData(IHost app)
+{
+    var scopedFactory = app.Services.GetService<IServiceScopeFactory>();
+
+    using (var scope = scopedFactory.CreateScope())
+    {
+        var service = scope.ServiceProvider.GetService<SeedData>();
+        service.SeedDatabase();
+    }
+}
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())

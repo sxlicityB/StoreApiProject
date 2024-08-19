@@ -10,7 +10,7 @@ namespace Store_Api_Proj.Repository
         private readonly AppDbContext _context;
         public OrderRepository(AppDbContext context) 
         {
-            context = _context;
+            _context = context;
         }
 
         public ICollection<Order> GetOrders() 
