@@ -10,14 +10,14 @@ namespace Store_Api_Proj.Repository
         private readonly AppDbContext _context;
         public BuyerRepository(AppDbContext context)
         {
-            context = _context;
+            _context = context;
         }
 
         public ICollection<Buyer> GetBuyers()
         {
             return _context.Buyers.OrderBy(x => x.BuyerId).ToList();
         }
-        public Buyer GetBuyerById(int id) 
+        public Buyer GetBuyer(int id) 
         {
             return _context.Buyers.FirstOrDefault(b => b.BuyerId == id);
         }

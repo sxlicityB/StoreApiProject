@@ -9,7 +9,7 @@ using Microsoft.Extensions.DependencyInjection;
 
 var builder = WebApplication.CreateBuilder(args);
 
-// Add services to the container.
+// Add services to the project.
 builder.Services.AddControllers();
 builder.Services.AddScoped<IOrder, OrderRepository>();
 builder.Services.AddScoped<IBuyer, BuyerRepository>();
@@ -17,7 +17,6 @@ builder.Services.AddScoped<IProduct, ProductRepository>();
 builder.Services.AddAutoMapper(typeof(MappingProfiles));
 void ConfigureServices(IServiceCollection services)
 {
-    // .... Ignore code before this
 
     // Auto Mapper Configurations
     var mappingConfig = new MapperConfiguration(mc =>

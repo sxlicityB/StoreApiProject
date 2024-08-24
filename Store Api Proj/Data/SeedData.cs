@@ -62,7 +62,6 @@ namespace Store_Api_Proj.Data
 
                 context.OrderProducts.AddRange(orderProducts);
 
-                // Save all changes to the database
                 context.SaveChanges();
             }
         }

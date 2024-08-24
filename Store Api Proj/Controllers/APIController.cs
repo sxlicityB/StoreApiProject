@@ -18,9 +18,11 @@ namespace Store_Api_Proj.Controllers
         private readonly IProduct _productRepository;
         private readonly IMapper _mapper;
 
-        public APIController(IOrder OrderRepository, IMapper mapper)
+        public APIController(IOrder OrderRepository,IBuyer BuyerRepository,IProduct ProductRepository, IMapper mapper)
         {
             this._orderRepository = OrderRepository;
+            this._buyerRepository = BuyerRepository;
+            this._productRepository = ProductRepository;
             _mapper = mapper;
         }
 
@@ -49,7 +51,7 @@ namespace Store_Api_Proj.Controllers
         }
 
         [HttpGet]
-        public IActionResult GetProduct()
+        public IActionResult GetProducts()
         {
             var products = _productRepository.GetProducts();
 
@@ -59,6 +61,8 @@ namespace Store_Api_Proj.Controllers
             return Ok(products);
         }
 
+        //Get by id endpoints
+
         [HttpGet("{OrderId}")]
         public IActionResult GetOrder(int OrderId)
         {
@@ -66,73 +70,19 @@ namespace Store_Api_Proj.Controllers
             return Ok(order);
         }
 
-
-        /*public ActionResult Index()
+        [HttpGet("{BuyerId}")]
+        public IActionResult GetBuyer(int buyerId)
         {
+            var buyer = _buyerRepository.GetBuyer(buyerId);
+            return Ok(buyer);
+        }
 
-
-
-
-            [HttpGet]
-            public IActionResult GetOrders()
-            {
-                return Ok(_context.Orders.ToList());
-            }
-
-            [HttpGet]
-            public IActionResult GetProducts()
-            {
-                return Ok(_context.Products.ToList());
-            }
-
-            [HttpGet]
-            public IActionResult GetBuyers()
-            {
-                return Ok(_context.Buyers.ToList());
-            }
-
-
-            // Get by id endpoints
-            [HttpGet("{id}")]
-            public IActionResult GetOrderById(int id) {
-                var order = _context.Orders.Find(id);
-
-                if (order == null)
-                    return NotFound();
-
-                return Ok(order);
-            }
-
-            // Post endpoints
-            [HttpPost]
-            public IActionResult AddOrder(Order order) {
-                _context.Orders.Add(order);
-                _context.SaveChanges();
-
-                return Ok();
-            }
-
-            [HttpPost]
-            public IActionResult AddProduct(Product product) {
-                _context.Products.Add(product);
-                _context.SaveChanges();
-                return Ok(_context.Products);
-            }
-
-            // Delete endpoints
-            [HttpDelete]
-            public IActionResult DeleteOrder(int id)
-            {
-                var order = _context.Orders.Find(id);
-                if(order == null)
-                {
-                    return NotFound();
-                }
-                _context.Orders.Remove(order);
-                _context.SaveChanges();
-
-                return Ok(_context.Orders);
-            }*/
+        [HttpGet("{ProductId}")]
+        public IActionResult GetProduct(int ProductId)
+        {
+            var product = _productRepository.GetProduct(ProductId);
+            return Ok(product);
+        }
 
 
     }
