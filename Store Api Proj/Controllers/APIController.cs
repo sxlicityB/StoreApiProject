@@ -31,7 +31,7 @@ namespace Store_Api_Proj.Controllers
         [HttpGet]
         public IActionResult GetOrders()
         {
-            var orders = _mapper.Map<List<CreateOrderRequest>>(_orderRepository.GetOrders());
+            var orders = _mapper.Map<List<GetOrderDTO>>(_orderRepository.GetOrders());
 
             if (!ModelState.IsValid)
                 return BadRequest(ModelState);
@@ -66,7 +66,7 @@ namespace Store_Api_Proj.Controllers
         [HttpGet("{OrderId}")]
         public IActionResult GetOrder(int OrderId)
         {
-            var order = _mapper.Map<CreateOrderRequest>(_orderRepository.GetOrder(OrderId));
+            var order = _mapper.Map<GetOrderDTO>(_orderRepository.GetOrder(OrderId));
             return Ok(order);
         }
 
@@ -87,16 +87,19 @@ namespace Store_Api_Proj.Controllers
         //POST endpoints
 
         [HttpPost]
-        public IActionResult CreateOrder([FromBody] CreateOrderRequest OrderCreate)
+        public IActionResult CreateOrder([FromBody] CreateOrderDTO OrderCreate)
         {
             if (OrderCreate == null)
-                BadRequest(ModelState);
+                BadRequest("Order data is null.");
 
             if (!ModelState.IsValid)
                 return BadRequest(ModelState);
 
-            var OrderMap = _mapper.Map<Order>(OrderCreate);
-            if (!_orderRepository.CreateOrder(OrderMap))
+            var NewOrder = _mapper.Map<Order>(OrderCreate);
+            NewOrder.Status = Order.OrderStatus.Pending;
+            NewOrder.TotalPrice = NewOrder.CalculateTotalPrice();
+
+            if (!_orderRepository.CreateOrder(NewOrder))
             {
                 ModelState.AddModelError("", "Something went wrong while saving");
                 return StatusCode(500, ModelState);

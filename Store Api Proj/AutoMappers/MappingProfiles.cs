@@ -9,8 +9,16 @@ namespace Store_Api_Proj.AutoMappers
     {
         public MappingProfiles()
         {
-            CreateMap<Order, CreateOrderRequest>();
-            CreateMap<CreateOrderRequest, Order>();
+            CreateMap<Order, GetOrderDTO>();
+            CreateMap<GetOrderDTO, Order>();
+
+            CreateMap<Order, CreateOrderDTO>();
+            CreateMap<CreateOrderDTO, Order>()
+                .ForMember(dest => dest.TotalPrice, opt => opt.Ignore())
+                .ForMember(dest => dest.OrderProducts, opt => opt.MapFrom(src => src.OrderProducts));
+
+            CreateMap<CreateOrderProductDTO, OrderProduct>();
+            CreateMap<OrderProduct, CreateOrderProductDTO>();
         }
     }
 }

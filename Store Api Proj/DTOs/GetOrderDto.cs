@@ -3,7 +3,7 @@ using Store_Api_Proj.Models;
 
 namespace Store_Api_Proj.DTOs
 {
-    public class CreateOrderRequest
+    public class GetOrderDTO
     {
         public int OrderId { get; set; }
         public Buyer? Buyer { get; set; }

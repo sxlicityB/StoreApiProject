@@ -18,6 +18,13 @@ namespace Store_Api_Proj.Data
         {
             base.OnModelCreating(modelBuilder);
 
+            //One to many relation between Order and Buyer classes
+            modelBuilder.Entity<Order>()
+            .HasOne(o => o.Buyer)
+            .WithMany(b => b.Orders)
+            .HasForeignKey(o => o.BuyerId);
+
+            //Many to many relations between Order and Product classes
             modelBuilder.Entity<OrderProduct>()
             .HasKey(op => new { op.OrderId, op.ProductId });
 

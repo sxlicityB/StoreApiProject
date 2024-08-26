@@ -17,7 +17,7 @@ namespace Store_Api_Proj.Data
                 // Check if the database has been seeded
                 /*if (context.Buyers.Any() || context.Products.Any())
                 {
-                    return;   // DB has been seeded
+                    return;   // check if DB has been seeded
                 }*/
 
                 // Seed Products

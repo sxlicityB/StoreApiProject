@@ -8,12 +8,13 @@ namespace Store_Api_Proj.Models
     {
         public int OrderId { get; set; }
         public int BuyerId { get; set; }
+        public Buyer Buyer { get; set; }
         public List<OrderProduct> OrderProducts { get; set; }
         public OrderStatus Status { get; set; } = OrderStatus.Pending;
         public decimal TotalPrice { get; set; }
         public decimal CalculateTotalPrice()
         {
-            return OrderProducts.Sum(p => p.Product.Price);
+            return OrderProducts.Sum(p => p.Product?.Price ?? 0);
         }
         public enum OrderStatus
         {
