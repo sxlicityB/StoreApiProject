@@ -18,7 +18,7 @@ namespace Store_Api_Proj.Controllers
         private readonly IProduct _productRepository;
         private readonly IMapper _mapper;
 
-        public APIController(IOrder OrderRepository,IBuyer BuyerRepository,IProduct ProductRepository, IMapper mapper)
+        public APIController(IOrder OrderRepository, IBuyer BuyerRepository, IProduct ProductRepository, IMapper mapper)
         {
             this._orderRepository = OrderRepository;
             this._buyerRepository = BuyerRepository;
@@ -82,6 +82,26 @@ namespace Store_Api_Proj.Controllers
         {
             var product = _productRepository.GetProduct(ProductId);
             return Ok(product);
+        }
+
+        //POST endpoints
+
+        [HttpPost]
+        public IActionResult CreateOrder([FromBody] CreateOrderRequest OrderCreate)
+        {
+            if (OrderCreate == null)
+                BadRequest(ModelState);
+
+            if (!ModelState.IsValid)
+                return BadRequest(ModelState);
+
+            var OrderMap = _mapper.Map<Order>(OrderCreate);
+            if (!_orderRepository.CreateOrder(OrderMap))
+            {
+                ModelState.AddModelError("", "Something went wrong while saving");
+                return StatusCode(500, ModelState);
+            }
+            return Ok("Successfully created order");
         }
 
 

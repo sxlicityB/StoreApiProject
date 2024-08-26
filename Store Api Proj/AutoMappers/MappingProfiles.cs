@@ -10,6 +10,7 @@ namespace Store_Api_Proj.AutoMappers
         public MappingProfiles()
         {
             CreateMap<Order, CreateOrderRequest>();
+            CreateMap<CreateOrderRequest, Order>();
         }
     }
 }

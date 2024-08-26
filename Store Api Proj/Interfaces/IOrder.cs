@@ -5,5 +5,7 @@ namespace Store_Api_Proj.Interfaces
     public interface IOrder { 
     ICollection<Order> GetOrders();
     Order GetOrder(int id);
+    bool CreateOrder(Order order);
+    bool UpdateOrder(); 
     }
 }

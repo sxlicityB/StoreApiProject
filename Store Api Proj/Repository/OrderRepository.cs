@@ -21,5 +21,17 @@ namespace Store_Api_Proj.Repository
         {
             return _context.Orders.FirstOrDefault(o => o.OrderId == id);
         }
+
+        public bool CreateOrder(Order order)
+        {
+            _context.Add(order);
+            return UpdateOrder();    
+        }
+
+        public bool UpdateOrder()
+        {
+            var OrderUpdate = _context.SaveChanges();
+            return OrderUpdate > 0;
+        }
     }
 }
