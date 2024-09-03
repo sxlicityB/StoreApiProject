@@ -96,7 +96,7 @@ namespace Store_Api_Proj.Controllers
                 return BadRequest(ModelState);
 
             var NewOrder = _mapper.Map<Order>(OrderCreate);
-            NewOrder.Status = Order.OrderStatus.Pending;
+            NewOrder.Status = Order.OrderStatus.Processing;
             NewOrder.TotalPrice = NewOrder.CalculateTotalPrice();
 
             if (!_orderRepository.CreateOrder(NewOrder))
