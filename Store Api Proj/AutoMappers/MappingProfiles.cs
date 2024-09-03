@@ -15,7 +15,8 @@ namespace Store_Api_Proj.AutoMappers
                  ProductId = op.Product.ProductId,
                  Brand = op.Product.Brand,
                  Type = op.Product.Type,
-                 Price = op.Product.Price
+                 Price = op.Product.Price,
+                 Quantity = op.Quantity
              })));
             CreateMap<GetOrderDTO, Order>();
 
@@ -24,6 +25,9 @@ namespace Store_Api_Proj.AutoMappers
             CreateMap<CreateOrderDTO, Order>()
                 .ForMember(dest => dest.TotalPrice, opt => opt.Ignore())
                 .ForMember(dest => dest.OrderProducts, opt => opt.MapFrom(src => src.OrderProducts));
+
+            CreateMap<CreateOrderProductDTO, OrderProduct>()
+            .ForMember(dest => dest.Product, opt => opt.Ignore());
 
 
             CreateMap<OrderProduct, OrderProductDTO>()
