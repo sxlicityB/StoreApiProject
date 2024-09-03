@@ -1,6 +1,6 @@
 ﻿namespace Store_Api_Proj.DTOs
 {
-    public class ProductDTO
+    public class OrderProductDTO
     {
         public int ProductId { get; set; }
         public string Brand { get; set; }

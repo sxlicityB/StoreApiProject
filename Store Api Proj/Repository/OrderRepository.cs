@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Http.HttpResults;
+using Microsoft.EntityFrameworkCore;
 using Store_Api_Proj.Data;
 using Store_Api_Proj.Interfaces;
 using Store_Api_Proj.Models;
@@ -21,7 +22,11 @@ namespace Store_Api_Proj.Repository
         }
         public Order GetOrder(int id)
         {
-            return _context.Orders.FirstOrDefault(o => o.OrderId == id);
+            return _context.Orders
+                  .Include(o => o.OrderProducts)
+                  .ThenInclude(op => op.Product)
+                  .Include(o => o.Buyer)
+                  .FirstOrDefault(o => o.OrderId == id);
         }
 
         public bool CreateOrder(Order order)
