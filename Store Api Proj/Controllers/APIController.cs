@@ -17,13 +17,15 @@ namespace Store_Api_Proj.Controllers
         private readonly IBuyer _buyerRepository;
         private readonly IProduct _productRepository;
         private readonly IMapper _mapper;
+        private readonly AppDbContext _context;
 
-        public APIController(IOrder OrderRepository, IBuyer BuyerRepository, IProduct ProductRepository, IMapper mapper)
+        public APIController(AppDbContext context, IOrder OrderRepository, IBuyer BuyerRepository, IProduct ProductRepository, IMapper mapper)
         {
             this._orderRepository = OrderRepository;
             this._buyerRepository = BuyerRepository;
             this._productRepository = ProductRepository;
             _mapper = mapper;
+            _context = context;
         }
 
         // Get endpoints
@@ -97,6 +99,16 @@ namespace Store_Api_Proj.Controllers
 
             var NewOrder = _mapper.Map<Order>(OrderCreate);
             NewOrder.Status = Order.OrderStatus.Pending;
+
+            foreach (var orderProduct in NewOrder.OrderProducts)
+            {
+                var product = _context.Products.FirstOrDefault(p => p.ProductId == orderProduct.ProductId);
+                if (product != null)
+                {
+                    orderProduct.Product = product;
+                }
+            }
+
             NewOrder.TotalPrice = NewOrder.CalculateTotalPrice();
 
             if (!_orderRepository.CreateOrder(NewOrder))

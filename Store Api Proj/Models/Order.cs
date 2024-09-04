@@ -14,7 +14,7 @@ namespace Store_Api_Proj.Models
         public decimal TotalPrice { get; set; }
         public decimal CalculateTotalPrice()
         {
-            return OrderProducts.Sum(p => p.Product?.Price ?? 0);
+            return OrderProducts.Sum(p => p.Product?.Price * p.Quantity ?? 0);
         }
         public enum OrderStatus
         {

@@ -31,6 +31,9 @@ namespace Store_Api_Proj.Repository
 
         public bool CreateOrder(Order order)
         {
+
+            order.TotalPrice = order.CalculateTotalPrice();
+
             _context.Add(order);
             return UpdateOrder();    
         }

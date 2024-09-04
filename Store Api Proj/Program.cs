@@ -15,21 +15,6 @@ builder.Services.AddScoped<IOrder, OrderRepository>();
 builder.Services.AddScoped<IBuyer, BuyerRepository>();
 builder.Services.AddScoped<IProduct, ProductRepository>();
 builder.Services.AddAutoMapper(typeof(MappingProfiles));
-void ConfigureServices(IServiceCollection services)
-{
-
-    // Auto Mapper Configurations
-    var mappingConfig = new MapperConfiguration(mc =>
-    {
-        mc.AddProfile(new MappingProfiles());
-    });
-
-    IMapper mapper = mappingConfig.CreateMapper();
-    services.AddSingleton(mapper);
-
-    services.AddMvc();
-
-}
 
 
 builder.Services.AddDbContext<AppDbContext>(options =>

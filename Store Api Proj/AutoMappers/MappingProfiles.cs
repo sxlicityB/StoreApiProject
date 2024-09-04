@@ -1,4 +1,6 @@
 ﻿using AutoMapper;
+using Microsoft.EntityFrameworkCore;
+using Store_Api_Proj.Data;
 using Store_Api_Proj.DTOs;
 using Store_Api_Proj.Models;
 using Store_Api_Proj.Repository;
@@ -7,8 +9,10 @@ namespace Store_Api_Proj.AutoMappers
 {
     public class MappingProfiles : Profile
     {
+        
         public MappingProfiles()
         {
+
             CreateMap<Order, GetOrderDTO>()
              .ForMember(dest => dest.Products, opt => opt.MapFrom(src => src.OrderProducts.Select(op => new OrderProductDTO
              {
