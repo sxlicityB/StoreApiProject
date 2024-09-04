@@ -24,7 +24,6 @@ namespace Store_Api_Proj.AutoMappers
              })));
             CreateMap<GetOrderDTO, Order>();
 
-
             CreateMap<Order, CreateOrderDTO>();
             CreateMap<CreateOrderDTO, Order>()
                 .ForMember(dest => dest.TotalPrice, opt => opt.Ignore())

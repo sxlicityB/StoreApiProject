@@ -16,9 +16,12 @@ namespace Store_Api_Proj.Repository
 
         public ICollection<Order> GetOrders() 
         {
-            var order = _context.Orders.OrderBy(o => o.OrderId).ToList();
             
-            return order;
+            return _context.Orders
+                  .Include(o => o.OrderProducts)
+                  .ThenInclude(op => op.Product)
+                  .Include(o => o.Buyer)
+                  .OrderBy(o => o.OrderId).ToList();
         }
         public Order GetOrder(int id)
         {
