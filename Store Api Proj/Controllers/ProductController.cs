@@ -38,5 +38,25 @@ namespace Store_Api_Proj.Controllers
             var product = _productRepository.GetProduct(ProductId);
             return Ok(product);
         }
+
+        //POST endpoint
+        [HttpPost]
+        public IActionResult CreateProduct([FromBody] CreateProductDTO ProductCreate)
+        {
+            if (ProductCreate == null)
+                BadRequest("Product data is null.");
+
+            if (!ModelState.IsValid)
+                return BadRequest(ModelState);
+
+            var NewProduct = _mapper.Map<Product>(ProductCreate);
+
+            if (!_productRepository.CreateProduct(NewProduct))
+            {
+                ModelState.AddModelError("", "Something went wrong while saving");
+                return StatusCode(500, ModelState);
+            }
+            return Ok("Successfully created product");
+        }
     }
 }

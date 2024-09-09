@@ -6,5 +6,7 @@ namespace Store_Api_Proj.Interfaces
     {
         ICollection<Product> GetProducts();
         Product GetProduct(int id);
+        bool CreateProduct(Product product);
+        bool UpdateProduct();
     }
 }

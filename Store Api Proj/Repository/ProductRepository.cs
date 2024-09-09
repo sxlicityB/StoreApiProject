@@ -20,5 +20,16 @@ namespace Store_Api_Proj.Repository
         {
             return _context.Products.FirstOrDefault(p => p.ProductId == id);
         }
+        public bool CreateProduct(Product product)
+        {
+            _context.Add(product);
+            return UpdateProduct();
+        }
+
+        public bool UpdateProduct()
+        {
+            var ProductUpdate = _context.SaveChanges();
+            return ProductUpdate > 0;
+        }
     }
 }

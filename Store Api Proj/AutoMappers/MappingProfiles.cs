@@ -41,6 +41,9 @@ namespace Store_Api_Proj.AutoMappers
 
             CreateMap<Buyer, CreateBuyerDTO>();
             CreateMap<CreateBuyerDTO, Buyer>();
+
+            CreateMap<Product, CreateProductDTO>();
+            CreateMap<CreateProductDTO, Product>();
         }
     }
 }
