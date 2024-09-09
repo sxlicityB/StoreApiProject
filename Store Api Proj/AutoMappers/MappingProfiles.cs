@@ -38,6 +38,9 @@ namespace Store_Api_Proj.AutoMappers
                 .ForMember(dest => dest.Brand, opt => opt.MapFrom(src => src.Product.Brand))
                 .ForMember(dest => dest.Type, opt => opt.MapFrom(src => src.Product.Type))
                 .ForMember(dest => dest.Price, opt => opt.MapFrom(src => src.Product.Price));
+
+            CreateMap<Buyer, CreateBuyerDTO>();
+            CreateMap<CreateBuyerDTO, Buyer>();
         }
     }
 }

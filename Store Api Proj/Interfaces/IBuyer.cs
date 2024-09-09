@@ -6,5 +6,7 @@ namespace Store_Api_Proj.Interfaces
     {
         ICollection<Buyer> GetBuyers();
         Buyer GetBuyer(int id);
+        bool CreateBuyer(Buyer buyer);
+        bool UpdateBuyer();
     }
 }

@@ -21,5 +21,17 @@ namespace Store_Api_Proj.Repository
         {
             return _context.Buyers.FirstOrDefault(b => b.BuyerId == id);
         }
+
+        public bool CreateBuyer(Buyer buyer)
+        {
+            _context.Add(buyer);
+            return UpdateBuyer();
+        }
+
+        public bool UpdateBuyer()
+        {
+            var BuyerUpdate = _context.SaveChanges();
+            return BuyerUpdate > 0;
+        }
     }
 }

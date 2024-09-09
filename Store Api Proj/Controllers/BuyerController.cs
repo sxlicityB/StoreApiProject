@@ -39,5 +39,24 @@ namespace Store_Api_Proj.Controllers
             return Ok(buyer);
         }
 
+        //POST endpoint
+        [HttpPost]
+        public IActionResult CreateBuyer([FromBody] CreateBuyerDTO BuyerCreate)
+        {
+            if (BuyerCreate == null)
+                BadRequest("Buyer data is null.");
+
+            if (!ModelState.IsValid)
+                return BadRequest(ModelState);
+
+            var NewBuyer = _mapper.Map<Buyer>(BuyerCreate);
+
+            if (!_buyerRepository.CreateBuyer(NewBuyer))
+            {
+                ModelState.AddModelError("", "Something went wrong while saving");
+                return StatusCode(500, ModelState);
+            }
+            return Ok("Successfully created buyer");
+        }
     }
 }
