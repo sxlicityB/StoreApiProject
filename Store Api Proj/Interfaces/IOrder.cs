@@ -6,6 +6,8 @@ namespace Store_Api_Proj.Interfaces
     ICollection<Order> GetOrders();
     Order GetOrder(int id);
     bool CreateOrder(Order order);
-    bool UpdateOrder(); 
+    bool UpdateOrder();
+    bool EditOrder(Order order);
+    public bool UpdateOrder(Order order);
     }
 }

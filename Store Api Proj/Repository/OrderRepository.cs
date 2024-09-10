@@ -46,5 +46,15 @@ namespace Store_Api_Proj.Repository
             var OrderUpdate = _context.SaveChanges();
             return OrderUpdate > 0;
         }
+        public bool UpdateOrder(Order order)
+        {
+            var OrderUpdate = _context.SaveChanges();
+            return OrderUpdate > 0;
+        }
+        public bool EditOrder(Order order)
+        {
+            _context.Update(order);
+            return UpdateOrder();
+        }
     }
 }

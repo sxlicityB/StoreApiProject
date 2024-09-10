@@ -120,5 +120,21 @@ namespace Store_Api_Proj.Controllers
         }
 
 
+        [HttpPut("{OrderId}")]
+        public IActionResult UpdateOrder(int OrderId, [FromBody] UpdateOrderDTO OrderUpdateDto) 
+        {
+            if (OrderUpdateDto == null || OrderId != OrderUpdateDto.OrderId)
+                return BadRequest("Invalid data.");
+
+            var UpdatedOrder = _mapper.Map<Order>(OrderUpdateDto);
+
+            if (!_orderRepository.EditOrder(UpdatedOrder))
+            {
+                ModelState.AddModelError("", "Something went wrong while updating the order");
+                return StatusCode(500, ModelState);
+            }
+            return NoContent();
+        }
+
     }
 }

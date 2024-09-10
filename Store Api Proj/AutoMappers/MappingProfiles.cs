@@ -44,6 +44,17 @@ namespace Store_Api_Proj.AutoMappers
 
             CreateMap<Product, CreateProductDTO>();
             CreateMap<CreateProductDTO, Product>();
+
+            CreateMap<Order, UpdateOrderDTO>()
+            .ForMember(dest => dest.Products, opt => opt.MapFrom(src => src.OrderProducts.Select(op => new OrderProductDTO
+             {
+                 Price = op.Product.Price,
+                 Quantity = op.Quantity
+             })));
+            CreateMap<UpdateOrderDTO, Order>()
+                .ForMember(dest => dest.TotalPrice, opt => opt.Ignore());
+
+            CreateMap<OrderProduct, UpdateOrderProductDTO>();
         }
     }
 }
