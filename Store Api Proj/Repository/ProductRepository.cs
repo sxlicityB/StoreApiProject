@@ -31,5 +31,10 @@ namespace Store_Api_Proj.Repository
             var ProductUpdate = _context.SaveChanges();
             return ProductUpdate > 0;
         }
+        public bool EditProduct(Product product)
+        {
+            _context.Update(product);
+            return UpdateProduct();
+        }
     }
 }

@@ -8,7 +8,6 @@ namespace Store_Api_Proj.DTOs
         public int OrderId { get; set; }
         public int BuyerId { get; set; }
         public OrderStatus Status { get; set; }
-        public List<UpdateOrderProductDTO> Products { get; set; } = new List<UpdateOrderProductDTO>();
 
     }
 }

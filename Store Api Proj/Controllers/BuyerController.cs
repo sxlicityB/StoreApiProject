@@ -33,9 +33,9 @@ namespace Store_Api_Proj.Controllers
         }
 
         [HttpGet("{BuyerId}")]
-        public IActionResult GetBuyer(int buyerId)
+        public IActionResult GetBuyer(int BuyerId)
         {
-            var buyer = _buyerRepository.GetBuyer(buyerId);
+            var buyer = _buyerRepository.GetBuyer(BuyerId);
             return Ok(buyer);
         }
 
@@ -57,6 +57,23 @@ namespace Store_Api_Proj.Controllers
                 return StatusCode(500, ModelState);
             }
             return Ok("Successfully created buyer");
+        }
+
+        //PUT endpoint
+        [HttpPut("{BuyerId}")]
+        public IActionResult UpdateBuyer(int BuyerId, [FromBody] UpdateBuyerDTO BuyerUpdateDto)
+        {
+            if (BuyerUpdateDto == null || BuyerId != BuyerUpdateDto.BuyerId)
+                return BadRequest("Invalid data.");
+
+            var UpdatedBuyer = _mapper.Map<Buyer>(BuyerUpdateDto);
+
+            if (!_buyerRepository.EditBuyer(UpdatedBuyer))
+            {
+                ModelState.AddModelError("", "Something went wrong while updating the buyer");
+                return StatusCode(500, ModelState);
+            }
+            return NoContent();
         }
     }
 }

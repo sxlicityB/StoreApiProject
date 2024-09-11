@@ -12,7 +12,7 @@ namespace Store_Api_Proj.AutoMappers
         
         public MappingProfiles()
         {
-
+            //GET maps
             CreateMap<Order, GetOrderDTO>()
              .ForMember(dest => dest.Products, opt => opt.MapFrom(src => src.OrderProducts.Select(op => new OrderProductDTO
              {
@@ -24,6 +24,7 @@ namespace Store_Api_Proj.AutoMappers
              })));
             CreateMap<GetOrderDTO, Order>();
 
+            //POST maps
             CreateMap<Order, CreateOrderDTO>();
             CreateMap<CreateOrderDTO, Order>()
                 .ForMember(dest => dest.TotalPrice, opt => opt.Ignore())
@@ -45,16 +46,15 @@ namespace Store_Api_Proj.AutoMappers
             CreateMap<Product, CreateProductDTO>();
             CreateMap<CreateProductDTO, Product>();
 
-            CreateMap<Order, UpdateOrderDTO>()
-            .ForMember(dest => dest.Products, opt => opt.MapFrom(src => src.OrderProducts.Select(op => new OrderProductDTO
-             {
-                 Price = op.Product.Price,
-                 Quantity = op.Quantity
-             })));
-            CreateMap<UpdateOrderDTO, Order>()
-                .ForMember(dest => dest.TotalPrice, opt => opt.Ignore());
+            //PUT maps
+            CreateMap<Order, UpdateOrderDTO>();
+            CreateMap<UpdateOrderDTO, Order>();
 
-            CreateMap<OrderProduct, UpdateOrderProductDTO>();
+            CreateMap<Buyer, UpdateBuyerDTO>();
+            CreateMap<UpdateBuyerDTO, Buyer>();
+
+            CreateMap<Product, UpdateProductDTO>();
+            CreateMap<UpdateProductDTO, Product>();
         }
     }
 }

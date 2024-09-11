@@ -8,6 +8,5 @@ namespace Store_Api_Proj.Interfaces
     bool CreateOrder(Order order);
     bool UpdateOrder();
     bool EditOrder(Order order);
-    public bool UpdateOrder(Order order);
     }
 }

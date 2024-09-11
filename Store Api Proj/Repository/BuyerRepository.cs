@@ -33,5 +33,10 @@ namespace Store_Api_Proj.Repository
             var BuyerUpdate = _context.SaveChanges();
             return BuyerUpdate > 0;
         }
+        public bool EditBuyer(Buyer buyer) 
+        {
+            _context.Update(buyer);
+            return UpdateBuyer();
+        }
     }
 }

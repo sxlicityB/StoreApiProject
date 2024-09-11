@@ -58,5 +58,22 @@ namespace Store_Api_Proj.Controllers
             }
             return Ok("Successfully created product");
         }
+
+        //PUT endpoint
+        [HttpPut("{ProductId}")]
+        public IActionResult UpdateProduct(int ProductId, [FromBody] UpdateProductDTO ProductUpdateDto)
+        {
+            if (ProductUpdateDto == null || ProductId != ProductUpdateDto.ProductId)
+                return BadRequest("Invalid data.");
+
+            var UpdatedProduct = _mapper.Map<Product>(ProductUpdateDto);
+
+            if (!_productRepository.EditProduct(UpdatedProduct))
+            {
+                ModelState.AddModelError("", "Something went wrong while updating the buyer");
+                return StatusCode(500, ModelState);
+            }
+            return NoContent();
+        }
     }
 }
