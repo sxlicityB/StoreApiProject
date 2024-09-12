@@ -6,6 +6,7 @@ using Store_Api_Proj.Interfaces;
 using Store_Api_Proj.Repository;
 using AutoMapper;
 using Store_Api_Proj.DTOs;
+using System.Reflection.Metadata.Ecma335;
 
 namespace Store_Api_Proj.Controllers
 {
@@ -108,6 +109,7 @@ namespace Store_Api_Proj.Controllers
                     orderProduct.Product = product;
                 }
             }
+            
 
             NewOrder.TotalPrice = NewOrder.CalculateTotalPrice();
 
@@ -135,6 +137,16 @@ namespace Store_Api_Proj.Controllers
             }
             return NoContent();
         }
+
+        //Delete endpoint
+        [HttpDelete]
+        public IActionResult DeleteOrder(int OrderId)
+        {
+            var DeletedOrder = _orderRepository.DeleteOrder(OrderId);
+            return Ok(DeletedOrder);
+        }
+        
+        
 
     }
 }

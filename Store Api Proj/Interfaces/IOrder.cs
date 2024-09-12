@@ -8,5 +8,6 @@ namespace Store_Api_Proj.Interfaces
     bool CreateOrder(Order order);
     bool UpdateOrder();
     bool EditOrder(Order order);
+    bool DeleteOrder(int id);
     }
 }

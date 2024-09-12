@@ -51,5 +51,12 @@ namespace Store_Api_Proj.Repository
             _context.Update(order);
             return UpdateOrder();
         }
+
+        public bool DeleteOrder(int id)
+        {
+            var order = _context.Orders.FirstOrDefault(o => o.OrderId == id);
+            _context.Remove(order);
+            return UpdateOrder();
+        }
     }
 }
