@@ -38,5 +38,11 @@ namespace Store_Api_Proj.Repository
             _context.Update(buyer);
             return UpdateBuyer();
         }
+        public bool DeleteBuyer(int id)
+        {
+            var buyer = _context.Buyers.FirstOrDefault(o => o.BuyerId == id);
+            _context.Remove(buyer);
+            return UpdateBuyer();
+        }
     }
 }

@@ -9,5 +9,6 @@ namespace Store_Api_Proj.Interfaces
         bool CreateProduct(Product product);
         bool UpdateProduct();
         bool EditProduct(Product product);
+        bool DeleteProduct(int id);
     }
 }

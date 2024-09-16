@@ -75,5 +75,13 @@ namespace Store_Api_Proj.Controllers
             }
             return NoContent();
         }
+
+        //Delete endpoint
+        [HttpDelete]
+        public IActionResult DeleteProduct(int ProductId)
+        {
+            var DeletedProduct = _productRepository.DeleteProduct(ProductId);
+            return Ok(DeletedProduct);
+        }
     }
 }

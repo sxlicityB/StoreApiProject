@@ -9,5 +9,6 @@ namespace Store_Api_Proj.Interfaces
         bool CreateBuyer(Buyer buyer);
         bool UpdateBuyer();
         bool EditBuyer(Buyer buyer);
+        bool DeleteBuyer(int id);
     }
 }
