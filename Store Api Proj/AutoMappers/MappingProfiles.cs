@@ -55,6 +55,7 @@ namespace Store_Api_Proj.AutoMappers
 
             CreateMap<Product, UpdateProductDTO>();
             CreateMap<UpdateProductDTO, Product>();
+
         }
     }
 }

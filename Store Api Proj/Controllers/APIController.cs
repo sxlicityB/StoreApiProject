@@ -12,21 +12,16 @@ namespace Store_Api_Proj.Controllers
 {
     [ApiController]
     [Route("api/[controller]/[action]")]
-    public class APIController : ControllerBase
+    public class OrderController : ControllerBase
     {
         private readonly IOrder _orderRepository;
-        private readonly IBuyer _buyerRepository;
-        private readonly IProduct _productRepository;
         private readonly IMapper _mapper;
         private readonly AppDbContext _context;
 
-        public APIController(AppDbContext context, IOrder OrderRepository, IBuyer BuyerRepository, IProduct ProductRepository, IMapper mapper)
+        public OrderController(AppDbContext context, IOrder OrderRepository, IBuyer BuyerRepository, IProduct ProductRepository, IMapper mapper)
         {
             this._orderRepository = OrderRepository;
-            this._buyerRepository = BuyerRepository;
-            this._productRepository = ProductRepository;
             _mapper = mapper;
-            _context = context;
         }
 
         // Get endpoints
@@ -42,28 +37,6 @@ namespace Store_Api_Proj.Controllers
             return Ok(orders);
         }
 
-        [HttpGet]
-        public IActionResult GetBuyers()
-        {
-            var buyers = _buyerRepository.GetBuyers();
-
-            if (!ModelState.IsValid)
-                return BadRequest(ModelState);
-
-            return Ok(buyers);
-        }
-
-        [HttpGet]
-        public IActionResult GetProducts()
-        {
-            var products = _productRepository.GetProducts();
-
-            if (!ModelState.IsValid)
-                return BadRequest(ModelState);
-
-            return Ok(products);
-        }
-
         //Get by id endpoints
 
         [HttpGet("{OrderId}")]
@@ -71,20 +44,6 @@ namespace Store_Api_Proj.Controllers
         {
             var order = _mapper.Map<GetOrderDTO>(_orderRepository.GetOrder(OrderId));
             return Ok(order);
-        }
-
-        [HttpGet("{BuyerId}")]
-        public IActionResult GetBuyer(int buyerId)
-        {
-            var buyer = _buyerRepository.GetBuyer(buyerId);
-            return Ok(buyer);
-        }
-
-        [HttpGet("{ProductId}")]
-        public IActionResult GetProduct(int ProductId)
-        {
-            var product = _productRepository.GetProduct(ProductId);
-            return Ok(product);
         }
 
         //POST endpoints
@@ -122,6 +81,7 @@ namespace Store_Api_Proj.Controllers
         }
 
 
+        //PUT endpoints
         [HttpPut("{OrderId}")]
         public IActionResult UpdateOrder(int OrderId, [FromBody] UpdateOrderDTO OrderUpdateDto) 
         {
