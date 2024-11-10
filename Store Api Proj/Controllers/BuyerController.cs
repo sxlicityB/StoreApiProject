@@ -10,7 +10,7 @@ using Store_Api_Proj.DTOs;
 namespace Store_Api_Proj.Controllers
 {
     [ApiController]
-    [Route("api/[controller]/[action]")]
+    [Route("api/[controller]")]
     public class BuyerController : ControllerBase
     {
         private readonly IBuyer _buyerRepository;

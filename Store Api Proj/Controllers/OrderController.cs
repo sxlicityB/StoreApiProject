@@ -11,7 +11,7 @@ using System.Reflection.Metadata.Ecma335;
 namespace Store_Api_Proj.Controllers
 {
     [ApiController]
-    [Route("api/[controller]/[action]")]
+    [Route("api/[controller]")]
     public class OrderController : ControllerBase
     {
         private readonly IOrder _orderRepository;

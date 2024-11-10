@@ -10,7 +10,7 @@ using Store_Api_Proj.DTOs;
 namespace Store_Api_Proj.Controllers
 {
     [ApiController]
-    [Route("api/[controller]/[action]")]
+    [Route("api/[controller]")]
     public class ProductController : ControllerBase
     {
         private readonly IProduct _productRepository;
