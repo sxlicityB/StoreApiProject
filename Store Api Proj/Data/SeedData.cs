@@ -1,5 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Store_Api_Proj.Models;
+using Bogus;
 
 namespace Store_Api_Proj.Data
 {
