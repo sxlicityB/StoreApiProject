@@ -8,7 +8,5 @@
         public bool Availability { get; set; }
         public decimal Price { get; set; }
         public ICollection<OrderProduct> OrderProducts { get; set; }
-
-        //public List<OrderProduct> OrderProducts { get; set; } = new List<OrderProduct>();
     }
 }
