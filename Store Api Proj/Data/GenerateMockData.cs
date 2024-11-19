@@ -30,17 +30,21 @@ public class GenerateMockData
 
         var faker = new Faker<Order>()
             .StrictMode(false)
-            .RuleFor(o => o.OrderId, maxOrderId++)
+            .RuleFor(o => o.OrderId, ++maxOrderId)
             .RuleFor(o => o.BuyerId, randomBuyerId)
             .RuleFor(o => o.Buyer, randomBuyer)
-            .RuleFor(o => o.OrderProducts, new List<OrderProduct>())
-            .RuleFor(o => o.Status, randomStatus)
-            .RuleFor(o => o.TotalPrice, 0);
+            .RuleFor(o => o.OrderProducts, f => _productRepository.GetProducts()
+                .OrderBy(p => f.Random.Number())
+                .Take(f.Random.Number(1, 10))
+                .Select(p => new OrderProduct
+                {Product = p,
+                 ProductId = p.ProductId,
+                 Quantity = f.Random.Number(1, 3)
+                })
+                .ToList())
+            .RuleFor(o => o.Status, randomStatus);
 
-        var newOrder = faker.Generate();
-        newOrder.TotalPrice = newOrder.CalculateTotalPrice();
-
-        _orderRepository.CreateOrder(newOrder);
+        _orderRepository.CreateOrder(faker.Generate());
     }
 
     public void GenerateBuyer()
@@ -53,6 +57,7 @@ public class GenerateMockData
             .RuleFor(b => b.Name, new Faker().Name.FullName())
             .RuleFor(b => b.Orders, new List<Order>());
 
+        _buyerRepository.CreateBuyer(faker.Generate());
     }
 
     public void GenereateProduct()
@@ -61,11 +66,12 @@ public class GenerateMockData
 
         var faker = new Faker<Product>()
             .StrictMode(false)
-            .RuleFor(p => p.ProductId, maxProductId)
+            .RuleFor(p => p.ProductId, ++maxProductId)
             .RuleFor(p => p.Brand, new Faker().Company.CompanyName())
             .RuleFor(p => p.Type, new Faker().Commerce.Department())
             .RuleFor(p => p.Availability, new Faker().Random.Bool(0.7f))
             .RuleFor(p => p.Price, Convert.ToDecimal(new Faker().Commerce.Price(1, 100)));
             
+        _productRepository.CreateProduct(faker.Generate());
     }
 }

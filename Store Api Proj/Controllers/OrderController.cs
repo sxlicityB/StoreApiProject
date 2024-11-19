@@ -70,7 +70,7 @@ namespace Store_Api_Proj.Controllers
             }
             
 
-            NewOrder.TotalPrice = NewOrder.CalculateTotalPrice();
+            
 
             if (!_orderRepository.CreateOrder(NewOrder))
             {

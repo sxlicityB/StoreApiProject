@@ -46,8 +46,8 @@ namespace Store_Api_Proj.Data
                 // Seed Orders
                 var orders = new List<Order>
                 {
-                new Order { BuyerId = buyers[0].BuyerId, Status = Order.OrderStatus.Pending, TotalPrice = 1199.98m },
-                new Order { BuyerId = buyers[1].BuyerId, Status = Order.OrderStatus.Shipped, TotalPrice = 199.99m }
+                //new Order { BuyerId = buyers[0].BuyerId, Status = Order.OrderStatus.Pending, TotalPrice = 1199.98m },
+                //new Order { BuyerId = buyers[1].BuyerId, Status = Order.OrderStatus.Shipped, TotalPrice = 199.99m }
                 };
 
                 context.Orders.AddRange(orders);
