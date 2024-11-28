@@ -14,6 +14,7 @@ builder.Services.AddControllers();
 builder.Services.AddScoped<IOrder, OrderRepository>();
 builder.Services.AddScoped<IBuyer, BuyerRepository>();
 builder.Services.AddScoped<IProduct, ProductRepository>();
+builder.Services.AddScoped<IDataService, DataRepository>();
 builder.Services.AddAutoMapper(typeof(MappingProfiles));
 
 

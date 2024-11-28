@@ -74,4 +74,10 @@ public class GenerateMockData
             
         _productRepository.CreateProduct(faker.Generate());
     }
+
+    public void GenereateData() {
+        GenerateBuyer();
+        GenereateProduct();
+        GenerateOrder();
+    }
 }
