@@ -6,5 +6,6 @@
         public void GenerateBuyer();
         public void GenerateProduct();
         public void GenerateData();
+        public void ResetDatabase();
     }
 }

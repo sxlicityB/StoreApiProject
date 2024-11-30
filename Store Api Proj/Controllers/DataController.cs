@@ -4,11 +4,11 @@ namespace Store_Api_Proj.Controllers
 {
     [ApiController]
     [Route("api/[controller]")]
-    public class MockDataController : ControllerBase
+    public class DataController : ControllerBase
     {
         private readonly IDataService _dataService;
         
-        public MockDataController(IDataService dataService)
+        public DataController(IDataService dataService)
         {
             _dataService = dataService;
         }
@@ -21,6 +21,20 @@ namespace Store_Api_Proj.Controllers
                 _dataService.GenerateData();
             }
             return Ok(new { message = "Mock data generated successfully!" });
+        }
+
+        [HttpPost("resetDB")]
+        public IActionResult ResetDatabase()
+        {
+            try
+            {
+                _dataService.ResetDatabase();
+                return Ok("Database was sucessfully reset!");
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
         }
     }
 }

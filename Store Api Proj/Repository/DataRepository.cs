@@ -1,4 +1,6 @@
 ﻿using Bogus;
+using Microsoft.EntityFrameworkCore;
+using Store_Api_Proj.Data;
 using Store_Api_Proj.Interfaces;
 using Store_Api_Proj.Models;
 
@@ -9,12 +11,14 @@ namespace Store_Api_Proj.Repository
         private readonly IOrder _orderRepository;
         private readonly IBuyer _buyerRepository;
         private readonly IProduct _productRepository;
+        private readonly AppDbContext _context;
 
-        public DataRepository(IOrder orderRepository, IBuyer buyerRepository, IProduct productRepository)
+        public DataRepository(IOrder orderRepository, IBuyer buyerRepository, IProduct productRepository, AppDbContext context)
         {
             _orderRepository = orderRepository;
             _buyerRepository = buyerRepository;
             _productRepository = productRepository;
+            _context = context;
         }
 
         public void GenerateOrder()
@@ -49,7 +53,6 @@ namespace Store_Api_Proj.Repository
 
         public void GenerateBuyer()
         {
-            int maxBuyerId = _buyerRepository.GetBuyers().Max(o => o.BuyerId);
 
             var faker = new Faker<Buyer>()
                 .StrictMode(false)
@@ -78,6 +81,18 @@ namespace Store_Api_Proj.Repository
             GenerateBuyer();
             GenerateProduct();
             GenerateOrder();
+        }
+
+        public void ResetDatabase()
+        {
+            _context.Orders.RemoveRange(_context.Orders);
+            _context.Products.RemoveRange(_context.Products);
+            _context.Buyers.RemoveRange(_context.Buyers);
+            _context.SaveChanges();
+
+            _context.Database.ExecuteSqlRaw("DBCC CHECKIDENT ('Orders', RESEED, 0)");
+            _context.Database.ExecuteSqlRaw("DBCC CHECKIDENT ('Buyers', RESEED, 0)");
+            _context.Database.ExecuteSqlRaw("DBCC CHECKIDENT ('Products', RESEED, 0)");
         }
     }
 }
