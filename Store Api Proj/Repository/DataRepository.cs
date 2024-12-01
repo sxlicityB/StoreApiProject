@@ -23,7 +23,6 @@ namespace Store_Api_Proj.Repository
 
         public void GenerateOrder()
         {
-            int maxOrderId = _orderRepository.GetOrders().Max(o => o.OrderId);
             int minBuyerId = _buyerRepository.GetBuyers().Min(o => o.BuyerId);
             int maxBuyerId = _buyerRepository.GetBuyers().Max(o => o.BuyerId);
 
@@ -64,7 +63,6 @@ namespace Store_Api_Proj.Repository
 
         public void GenerateProduct()
         {
-            int maxProductId = _productRepository.GetProducts().Max(o => o.ProductId);
 
             var faker = new Faker<Product>()
                 .StrictMode(false)

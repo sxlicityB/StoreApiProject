@@ -43,11 +43,6 @@ namespace Store_Api_Proj.Controllers
         [HttpPost]
         public IActionResult CreateBuyer([FromBody] CreateBuyerDTO BuyerCreate)
         {
-            if (BuyerCreate == null)
-                BadRequest("Buyer data is null.");
-
-            if (!ModelState.IsValid)
-                return BadRequest(ModelState);
 
             var NewBuyer = _mapper.Map<Buyer>(BuyerCreate);
 
@@ -63,8 +58,8 @@ namespace Store_Api_Proj.Controllers
         [HttpPut("{BuyerId}")]
         public IActionResult UpdateBuyer(int BuyerId, [FromBody] UpdateBuyerDTO BuyerUpdateDto)
         {
-            if (BuyerUpdateDto == null || BuyerId != BuyerUpdateDto.BuyerId)
-                return BadRequest("Invalid data.");
+            if (BuyerId != BuyerUpdateDto.BuyerId)
+                return BadRequest("Buyer IDs don't match");
 
             var UpdatedBuyer = _mapper.Map<Buyer>(BuyerUpdateDto);
 
