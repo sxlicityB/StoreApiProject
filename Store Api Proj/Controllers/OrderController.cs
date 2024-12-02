@@ -51,16 +51,11 @@ namespace Store_Api_Proj.Controllers
         [HttpPost]
         public IActionResult CreateOrder([FromBody] CreateOrderDTO OrderCreate)
         {
-            if (OrderCreate == null)
-                BadRequest("Order data is null.");
 
-            if (!ModelState.IsValid)
-                return BadRequest(ModelState);
+            var newOrder = _mapper.Map<Order>(OrderCreate);
+            newOrder.Status = Order.OrderStatus.Pending;
 
-            var NewOrder = _mapper.Map<Order>(OrderCreate);
-            NewOrder.Status = Order.OrderStatus.Pending;
-
-            foreach (var orderProduct in NewOrder.OrderProducts)
+            foreach (var orderProduct in newOrder.OrderProducts)
             {
                 var product = _context.Products.FirstOrDefault(p => p.ProductId == orderProduct.ProductId);
                 if (product != null)
@@ -68,11 +63,8 @@ namespace Store_Api_Proj.Controllers
                     orderProduct.Product = product;
                 }
             }
-            
 
-            
-
-            if (!_orderRepository.CreateOrder(NewOrder))
+            if (!_orderRepository.CreateOrder(newOrder))
             {
                 ModelState.AddModelError("", "Something went wrong while saving");
                 return StatusCode(500, ModelState);
@@ -85,8 +77,8 @@ namespace Store_Api_Proj.Controllers
         [HttpPut("{OrderId}")]
         public IActionResult UpdateOrder(int OrderId, [FromBody] UpdateOrderDTO OrderUpdateDto) 
         {
-            if (OrderUpdateDto == null || OrderId != OrderUpdateDto.OrderId)
-                return BadRequest("Invalid data.");
+            if (OrderId != OrderUpdateDto.OrderId)
+                return BadRequest("Order IDs don't match");
 
             var UpdatedOrder = _mapper.Map<Order>(OrderUpdateDto);
 

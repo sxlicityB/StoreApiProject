@@ -1,0 +1,16 @@
+﻿using FluentValidation;
+using Store_Api_Proj.DTOs;
+using Store_Api_Proj.Models;
+
+namespace Store_Api_Proj.Validators
+{
+    public class UpdateOrderDTOValidator : AbstractValidator<UpdateOrderDTO>
+    {
+        public UpdateOrderDTOValidator(){
+            RuleFor(o => o.OrderId).NotEmpty().WithMessage("Order id cannot be empty");
+            RuleFor(o => o.BuyerId).NotEmpty().WithMessage("Buyer id cannot be empty");
+            RuleFor(o => o.Status).IsInEnum().WithMessage("Must contain valid status");
+
+        }
+    }
+}
