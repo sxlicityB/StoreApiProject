@@ -43,12 +43,6 @@ namespace Store_Api_Proj.Controllers
         [HttpPost]
         public IActionResult CreateProduct([FromBody] CreateProductDTO ProductCreate)
         {
-            if (ProductCreate == null)
-                BadRequest("Product data is null.");
-
-            if (!ModelState.IsValid)
-                return BadRequest(ModelState);
-
             var NewProduct = _mapper.Map<Product>(ProductCreate);
 
             if (!_productRepository.CreateProduct(NewProduct))
