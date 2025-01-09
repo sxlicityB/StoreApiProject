@@ -10,6 +10,7 @@ using Microsoft.Extensions.DependencyInjection;
 using FluentValidation;
 using FluentValidation.AspNetCore;
 
+//testing
 
 var builder = WebApplication.CreateBuilder(args);
 
