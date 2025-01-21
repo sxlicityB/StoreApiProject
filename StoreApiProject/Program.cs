@@ -1,6 +1,6 @@
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.EntityFrameworkCore;
-using StoreApiProject.AutoMappers;
+using StoreApiProject.Mapster;
 using StoreApiProject.Data;
 using StoreApiProject.Interfaces;
 using StoreApiProject.Repository;
@@ -10,7 +10,6 @@ using Microsoft.Extensions.DependencyInjection;
 using FluentValidation;
 using FluentValidation.AspNetCore;
 
-//testing
 
 var builder = WebApplication.CreateBuilder(args);
 

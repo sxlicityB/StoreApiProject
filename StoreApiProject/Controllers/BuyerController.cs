@@ -22,9 +22,9 @@ namespace StoreApiProject.Controllers
         }
 
         [HttpGet]
-        public IActionResult GetBuyers()
+        public async Task<IActionResult> GetBuyers()
         {
-            var buyers = _buyerRepository.GetBuyers();
+            var buyers = await _buyerRepository.GetBuyers();
 
             if (!ModelState.IsValid)
                 return BadRequest(ModelState);
@@ -33,20 +33,20 @@ namespace StoreApiProject.Controllers
         }
 
         [HttpGet("{BuyerId}")]
-        public IActionResult GetBuyer(int BuyerId)
+        public async Task<IActionResult> GetBuyer(int BuyerId)
         {
-            var buyer = _buyerRepository.GetBuyer(BuyerId);
+            var buyer = await _buyerRepository.GetBuyer(BuyerId);
             return Ok(buyer);
         }
 
         //POST endpoint
         [HttpPost]
-        public IActionResult CreateBuyer([FromBody] CreateBuyerDTO BuyerCreate)
+        public async Task<IActionResult> CreateBuyer([FromBody] CreateBuyerDTO BuyerCreate)
         {
 
             var NewBuyer = _mapper.Map<Buyer>(BuyerCreate);
 
-            if (!_buyerRepository.CreateBuyer(NewBuyer))
+            if (!await _buyerRepository.CreateBuyer(NewBuyer))
             {
                 ModelState.AddModelError("", "Something went wrong while saving");
                 return StatusCode(500, ModelState);
@@ -56,14 +56,14 @@ namespace StoreApiProject.Controllers
 
         //PUT endpoint
         [HttpPut("{BuyerId}")]
-        public IActionResult UpdateBuyer(int BuyerId, [FromBody] UpdateBuyerDTO BuyerUpdateDto)
+        public async Task<IActionResult> UpdateBuyer(int BuyerId, [FromBody] UpdateBuyerDTO BuyerUpdateDto)
         {
             if (BuyerId != BuyerUpdateDto.BuyerId)
                 return BadRequest("Buyer IDs don't match");
 
             var UpdatedBuyer = _mapper.Map<Buyer>(BuyerUpdateDto);
 
-            if (!_buyerRepository.EditBuyer(UpdatedBuyer))
+            if (!await _buyerRepository.EditBuyer(UpdatedBuyer))
             {
                 ModelState.AddModelError("", "Something went wrong while updating the buyer");
                 return StatusCode(500, ModelState);
@@ -73,9 +73,9 @@ namespace StoreApiProject.Controllers
 
         //Delete endpoint
         [HttpDelete]
-        public IActionResult DeleteBuyer(int BuyerId)
+        public async Task<IActionResult> DeleteBuyer(int BuyerId)
         {
-            var DeletedBuyer = _buyerRepository.DeleteBuyer(BuyerId);
+            var DeletedBuyer = await _buyerRepository.DeleteBuyer(BuyerId);
             return Ok(DeletedBuyer);
         }
     }

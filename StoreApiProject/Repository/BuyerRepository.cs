@@ -2,6 +2,7 @@
 using StoreApiProject.Data;
 using StoreApiProject.Interfaces;
 using StoreApiProject.Models;
+using Microsoft.EntityFrameworkCore;
 
 namespace StoreApiProject.Repository
 {
@@ -13,36 +14,40 @@ namespace StoreApiProject.Repository
             _context = context;
         }
 
-        public ICollection<Buyer> GetBuyers()
+        public async Task<ICollection<Buyer>> GetBuyers()
         {
-            return _context.Buyers.OrderBy(x => x.BuyerId).ToList();
+            return await _context.Buyers.OrderBy(x => x.BuyerId).ToListAsync();
         }
-        public Buyer GetBuyer(int id) 
+        public async Task<Buyer> GetBuyer(int id) 
         {
-            return _context.Buyers.FirstOrDefault(b => b.BuyerId == id);
-        }
-
-        public bool CreateBuyer(Buyer buyer)
-        {
-            _context.Add(buyer);
-            return UpdateBuyer();
+            return await _context.Buyers.FindAsync(id);
         }
 
-        public bool UpdateBuyer()
+        public async Task<bool> CreateBuyer(Buyer buyer)
         {
-            var BuyerUpdate = _context.SaveChanges();
+            await _context.AddAsync(buyer);
+            return await UpdateBuyer();
+        }
+
+        public async Task<bool> UpdateBuyer()
+        {
+            var BuyerUpdate = await  _context.SaveChangesAsync();
             return BuyerUpdate > 0;
         }
-        public bool EditBuyer(Buyer buyer) 
+        public async Task<bool> EditBuyer(Buyer buyer) 
         {
             _context.Update(buyer);
-            return UpdateBuyer();
+            return await UpdateBuyer();
         }
-        public bool DeleteBuyer(int id)
+        public async Task<bool> DeleteBuyer(int id)
         {
-            var buyer = _context.Buyers.FirstOrDefault(o => o.BuyerId == id);
+            var buyer = await _context.Buyers.FindAsync(id);
+
+            if (buyer == null)
+                return false;
+
             _context.Remove(buyer);
-            return UpdateBuyer();
+            return await UpdateBuyer();
         }
     }
 }

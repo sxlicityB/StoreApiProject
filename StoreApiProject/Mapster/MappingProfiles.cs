@@ -5,7 +5,7 @@ using StoreApiProject.DTOs;
 using StoreApiProject.Models;
 using StoreApiProject.Repository;
 
-namespace StoreApiProject.AutoMappers
+namespace StoreApiProject.Mapster
 {
     public class MappingProfiles : Profile
     {
