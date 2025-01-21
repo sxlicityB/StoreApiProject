@@ -21,13 +21,14 @@ namespace StoreApiProject.Repository
             _context = context;
         }
 
-        public void GenerateOrder()
+        public async Task GenerateOrder()
         {
-            int minBuyerId = _buyerRepository.GetBuyers().Min(o => o.BuyerId);
-            int maxBuyerId = _buyerRepository.GetBuyers().Max(o => o.BuyerId);
+            var buyers = await _buyerRepository.GetBuyers();
+            int minBuyerId = buyers.Min(o => o.BuyerId);
+            int maxBuyerId = buyers.Max(o => o.BuyerId);
 
             int randomBuyerId = new Faker().Random.Number(minBuyerId, maxBuyerId);
-            var randomBuyer = _buyerRepository.GetBuyer(randomBuyerId);
+            var randomBuyer = await _buyerRepository.GetBuyer(randomBuyerId);
 
             var randomStatus = new Faker().PickRandom<Order.OrderStatus>();
 

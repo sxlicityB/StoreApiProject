@@ -2,7 +2,7 @@
 {
     public interface IDataService
     {
-        public void GenerateOrder();
+        public Task GenerateOrder();
         public void GenerateBuyer();
         public void GenerateProduct();
         public void GenerateData();
