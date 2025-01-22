@@ -14,49 +14,51 @@ namespace StoreApiProject.Repository
             _context = context;
         }
 
-        public ICollection<Order> GetOrders() 
+        public async Task<ICollection<Order>> GetOrders() 
         {
             
-            return _context.Orders
+            return await _context.Orders
                   .Include(o => o.OrderProducts)
                   .ThenInclude(op => op.Product)
                   .Include(o => o.Buyer)
-                  .OrderBy(o => o.OrderId).ToList();
+                  .OrderBy(o => o.OrderId).ToListAsync();
         }
-        public Order GetOrder(int id)
+        public async Task<Order> GetOrder(int id)
         {
-            return _context.Orders
+            return await _context.Orders
                   .Include(o => o.OrderProducts)
                   .ThenInclude(op => op.Product)
                   .Include(o => o.Buyer)
-                  .FirstOrDefault(o => o.OrderId == id);
+                  .FirstOrDefaultAsync(o => o.OrderId == id);
         }
 
-        public bool CreateOrder(Order order)
+        public async Task<bool> CreateOrder(Order order)
         {
 
-            //order.TotalPrice = order.CalculateTotalPrice();
-
-            _context.Add(order);
-            return UpdateOrder();    
+            await _context.AddAsync(order);
+            return await UpdateOrder();    
         }
 
-        public bool UpdateOrder()
+        public async Task<bool> UpdateOrder()
         {
-            var OrderUpdate = _context.SaveChanges();
+            var OrderUpdate = await _context.SaveChangesAsync();
             return OrderUpdate > 0;
         }
-        public bool EditOrder(Order order)
+        public async Task<bool> EditOrder(Order order)
         {
             _context.Update(order);
-            return UpdateOrder();
+            return await UpdateOrder();
         }
 
-        public bool DeleteOrder(int id)
+        public async Task<bool> DeleteOrder(int id)
         {
-            var order = _context.Orders.FirstOrDefault(o => o.OrderId == id);
+            var order = await _context.Orders.FindAsync(id);
+
+            if (order == null)
+                return false;
+
             _context.Remove(order);
-            return UpdateOrder();
+            return await UpdateOrder();
         }
     }
 }

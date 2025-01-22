@@ -16,9 +16,9 @@ namespace StoreApiProject.Repository
         {
             return _context.Products.OrderBy(x => x.ProductId).ToList();
         }
-        public Product GetProduct(int id) 
+        public async Task<Product> GetProduct(int id) 
         {
-            return _context.Products.FirstOrDefault(p => p.ProductId == id);
+            return await _context.Products.FindAsync(id);
         }
         public bool CreateProduct(Product product)
         {

@@ -31,7 +31,7 @@ namespace StoreApiProject.Repository
 
         public async Task<bool> UpdateBuyer()
         {
-            var BuyerUpdate = await  _context.SaveChangesAsync();
+            var BuyerUpdate = await _context.SaveChangesAsync();
             return BuyerUpdate > 0;
         }
         public async Task<bool> EditBuyer(Buyer buyer) 

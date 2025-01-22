@@ -3,11 +3,11 @@
 namespace StoreApiProject.Interfaces
 {
     public interface IOrder { 
-    ICollection<Order> GetOrders();
-    Order GetOrder(int id);
-    bool CreateOrder(Order order);
-    bool UpdateOrder();
-    bool EditOrder(Order order);
-    bool DeleteOrder(int id);
+    Task<ICollection<Order>> GetOrders();
+    Task<Order> GetOrder(int id);
+    Task<bool> CreateOrder(Order order);
+    Task<bool> UpdateOrder();
+    Task<bool> EditOrder(Order order);
+    Task<bool> DeleteOrder(int id);
     }
 }
