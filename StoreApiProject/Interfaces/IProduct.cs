@@ -4,11 +4,11 @@ namespace StoreApiProject.Interfaces
 {
     public interface IProduct
     {
-        ICollection<Product> GetProducts();
+        Task<ICollection<Product>> GetProducts();
         Task<Product> GetProduct(int id);
-        bool CreateProduct(Product product);
-        bool UpdateProduct();
-        bool EditProduct(Product product);
-        bool DeleteProduct(int id);
+        Task<bool> CreateProduct(Product product);
+        Task<bool> UpdateProduct();
+        Task<bool> EditProduct(Product product);
+        Task<bool> DeleteProduct(int id);
     }
 }

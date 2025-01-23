@@ -22,9 +22,9 @@ namespace StoreApiProject.Controllers
         }
 
         [HttpGet]
-        public IActionResult GetProducts()
+        public async Task<IActionResult> GetProducts()
         {
-            var products = _productRepository.GetProducts();
+            var products = await _productRepository.GetProducts();
 
             if (!ModelState.IsValid)
                 return BadRequest(ModelState);
@@ -33,19 +33,19 @@ namespace StoreApiProject.Controllers
         }
 
         [HttpGet("{ProductId}")]
-        public IActionResult GetProduct(int ProductId)
+        public async Task<IActionResult> GetProduct(int ProductId)
         {
-            var product = _productRepository.GetProduct(ProductId);
+            var product = await _productRepository.GetProduct(ProductId);
             return Ok(product);
         }
 
         //POST endpoint
         [HttpPost]
-        public IActionResult CreateProduct([FromBody] CreateProductDTO ProductCreate)
+        public async Task<IActionResult> CreateProduct([FromBody] CreateProductDTO ProductCreate)
         {
             var NewProduct = _mapper.Map<Product>(ProductCreate);
 
-            if (!_productRepository.CreateProduct(NewProduct))
+            if (!await _productRepository.CreateProduct(NewProduct))
             {
                 ModelState.AddModelError("", "Something went wrong while saving");
                 return StatusCode(500, ModelState);
@@ -55,14 +55,14 @@ namespace StoreApiProject.Controllers
 
         //PUT endpoint
         [HttpPut("{ProductId}")]
-        public IActionResult UpdateProduct(int ProductId, [FromBody] UpdateProductDTO ProductUpdateDto)
+        public async Task<IActionResult> UpdateProduct(int ProductId, [FromBody] UpdateProductDTO ProductUpdateDto)
         {
             if (ProductUpdateDto == null || ProductId != ProductUpdateDto.ProductId)
                 return BadRequest("Invalid data.");
 
             var UpdatedProduct = _mapper.Map<Product>(ProductUpdateDto);
 
-            if (!_productRepository.EditProduct(UpdatedProduct))
+            if (!await _productRepository.EditProduct(UpdatedProduct))
             {
                 ModelState.AddModelError("", "Something went wrong while updating the buyer");
                 return StatusCode(500, ModelState);
@@ -72,9 +72,9 @@ namespace StoreApiProject.Controllers
 
         //Delete endpoint
         [HttpDelete]
-        public IActionResult DeleteProduct(int ProductId)
+        public async Task<IActionResult> DeleteProduct(int ProductId)
         {
-            var DeletedProduct = _productRepository.DeleteProduct(ProductId);
+            var DeletedProduct = await _productRepository.DeleteProduct(ProductId);
             return Ok(DeletedProduct);
         }
     }

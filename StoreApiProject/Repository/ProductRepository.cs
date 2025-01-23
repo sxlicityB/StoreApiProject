@@ -1,6 +1,7 @@
 ﻿using StoreApiProject.Data;
 using StoreApiProject.Interfaces;
 using StoreApiProject.Models;
+using Microsoft.EntityFrameworkCore;
 
 namespace StoreApiProject.Repository
 {
@@ -12,35 +13,35 @@ namespace StoreApiProject.Repository
             _context = context;
         }
 
-        public ICollection<Product> GetProducts()
+        public async Task<ICollection<Product>> GetProducts()
         {
-            return _context.Products.OrderBy(x => x.ProductId).ToList();
+            return await _context.Products.OrderBy(x => x.ProductId).ToListAsync();
         }
         public async Task<Product> GetProduct(int id) 
         {
             return await _context.Products.FindAsync(id);
         }
-        public bool CreateProduct(Product product)
+        public async Task<bool> CreateProduct(Product product)
         {
             _context.Add(product);
-            return UpdateProduct();
+            return await UpdateProduct();
         }
 
-        public bool UpdateProduct()
+        public async Task<bool> UpdateProduct()
         {
             var ProductUpdate = _context.SaveChanges();
             return ProductUpdate > 0;
         }
-        public bool EditProduct(Product product)
+        public async Task<bool> EditProduct(Product product)
         {
             _context.Update(product);
-            return UpdateProduct();
+            return await UpdateProduct();
         }
-        public bool DeleteProduct(int id)
+        public async Task<bool> DeleteProduct(int id)
         {
             var product = _context.Products.FirstOrDefault(o => o.ProductId == id);
             _context.Remove(product);
-            return UpdateProduct();
+            return await UpdateProduct();
         }
     }
 }

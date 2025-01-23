@@ -32,11 +32,13 @@ namespace StoreApiProject.Repository
 
             var randomStatus = new Faker().PickRandom<Order.OrderStatus>();
 
+            var orderProducts = await _productRepository.GetProducts();
+
             var faker = new Faker<Order>()
                 .StrictMode(false)
                 .RuleFor(o => o.BuyerId, randomBuyerId)
                 .RuleFor(o => o.Buyer, randomBuyer)
-                .RuleFor(o => o.OrderProducts, f => _productRepository.GetProducts()
+                .RuleFor(o => o.OrderProducts, f => orderProducts
                     .OrderBy(p => f.Random.Number())
                     .Take(f.Random.Number(1, 10))
                     .Select(p => new OrderProduct
