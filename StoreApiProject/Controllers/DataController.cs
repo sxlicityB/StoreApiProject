@@ -14,21 +14,21 @@ namespace StoreApiProject.Controllers
         }
 
         [HttpPost]
-        public IActionResult GenerateMockData(int CycleCount)
+        public async Task<IActionResult> GenerateMockData(int CycleCount)
         {
             for (int i = 0; i < CycleCount; i++)
             {
-                _dataService.GenerateData();
+                await _dataService.GenerateData();
             }
             return Ok(new { message = "Mock data generated successfully!" });
         }
 
         [HttpPost("resetDB")]
-        public IActionResult ResetDatabase()
+        public async Task<IActionResult> ResetDatabase()
         {
             try
             {
-                _dataService.ResetDatabase();
+                await _dataService.ResetDatabase();
                 return Ok("Database was sucessfully reset!");
             }
             catch (Exception ex)

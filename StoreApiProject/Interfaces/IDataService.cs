@@ -3,9 +3,9 @@
     public interface IDataService
     {
         public Task GenerateOrder();
-        public void GenerateBuyer();
-        public void GenerateProduct();
-        public void GenerateData();
-        public void ResetDatabase();
+        public Task GenerateBuyer();
+        public Task GenerateProduct();
+        public Task GenerateData();
+        public Task ResetDatabase();
     }
 }

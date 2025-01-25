@@ -50,10 +50,10 @@ namespace StoreApiProject.Repository
                     .ToList())
                 .RuleFor(o => o.Status, randomStatus);
 
-            _orderRepository.CreateOrder(faker.Generate());
+            await _orderRepository.CreateOrder(faker.Generate());
         }
 
-        public void GenerateBuyer()
+        public async Task GenerateBuyer()
         {
 
             var faker = new Faker<Buyer>()
@@ -61,10 +61,10 @@ namespace StoreApiProject.Repository
                 .RuleFor(b => b.Name, new Faker().Name.FullName())
                 .RuleFor(b => b.Orders, new List<Order>());
 
-            _buyerRepository.CreateBuyer(faker.Generate());
+            await _buyerRepository.CreateBuyer(faker.Generate());
         }
 
-        public void GenerateProduct()
+        public async Task GenerateProduct()
         {
 
             var faker = new Faker<Product>()
@@ -74,26 +74,26 @@ namespace StoreApiProject.Repository
                 .RuleFor(p => p.Availability, new Faker().Random.Bool(0.7f))
                 .RuleFor(p => p.Price, Convert.ToDecimal(new Faker().Commerce.Price(1, 100)));
 
-            _productRepository.CreateProduct(faker.Generate());
+            await _productRepository.CreateProduct(faker.Generate());
         }
 
-        public void GenerateData()
+        public async Task GenerateData()
         {
-            GenerateBuyer();
-            GenerateProduct();
-            GenerateOrder();
+            await GenerateBuyer();
+            await GenerateProduct();
+            await GenerateOrder();
         }
 
-        public void ResetDatabase()
+        public async Task ResetDatabase()
         {
             _context.Orders.RemoveRange(_context.Orders);
             _context.Products.RemoveRange(_context.Products);
             _context.Buyers.RemoveRange(_context.Buyers);
-            _context.SaveChanges();
+            await _context.SaveChangesAsync();
 
-            _context.Database.ExecuteSqlRaw("DBCC CHECKIDENT ('Orders', RESEED, 0)");
-            _context.Database.ExecuteSqlRaw("DBCC CHECKIDENT ('Buyers', RESEED, 0)");
-            _context.Database.ExecuteSqlRaw("DBCC CHECKIDENT ('Products', RESEED, 0)");
+            await _context.Database.ExecuteSqlRawAsync("DBCC CHECKIDENT ('Orders', RESEED, 0)");
+            await _context.Database.ExecuteSqlRawAsync("DBCC CHECKIDENT ('Buyers', RESEED, 0)");
+            await _context.Database.ExecuteSqlRawAsync("DBCC CHECKIDENT ('Products', RESEED, 0)");
         }
     }
 }
