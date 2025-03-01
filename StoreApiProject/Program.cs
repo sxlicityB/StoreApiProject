@@ -12,12 +12,22 @@ using FluentValidation.AspNetCore;
 
 var builder = WebApplication.CreateBuilder(args);
 
+builder.Configuration                                                                                               //Load development profile if in dev environment
+    .SetBasePath(Directory.GetCurrentDirectory())
+    .AddJsonFile("appsettings.json", optional: false, reloadOnChange: true)
+    .AddJsonFile($"appsettings.{builder.Environment.EnvironmentName}.json", optional: true, reloadOnChange: true)
+    .AddEnvironmentVariables(); //override both files if set
+
+
+
 // Add services to the project.
 builder.Services.AddControllers();
-builder.Services.AddBLLServices();                          // DAL repos registration is referenced in BLL
+builder.Services.AddBLLServices();                       // DAL repos registration is referenced in BLL
 builder.Services.AddAutoMapper(typeof(MappingProfiles));
 
-builder.Services.AddFluentValidationAutoValidation();           // Validtion injection
+
+
+builder.Services.AddFluentValidationAutoValidation();                        // Validtion injection
 builder.Services.AddValidatorsFromAssembly(typeof(CreateBuyerDTOValidator).Assembly);
 
 
