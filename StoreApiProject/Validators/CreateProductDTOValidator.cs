@@ -1,5 +1,4 @@
 ﻿using FluentValidation;
-using StoreApiProject.Data;
 using StoreApiProject.DTOs;
 
 namespace StoreApiProject.Validators

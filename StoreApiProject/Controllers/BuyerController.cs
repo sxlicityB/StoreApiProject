@@ -1,9 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using StoreApiProject.Data;
-using StoreApiProject.Models;
+using StoreApiProject.Domain.Models;
 using Microsoft.EntityFrameworkCore;
-using StoreApiProject.Interfaces;
-using StoreApiProject.Repository;
+using StoreApiProject.BLL.Interfaces;
 using AutoMapper;
 using StoreApiProject.DTOs;
 
@@ -13,18 +11,18 @@ namespace StoreApiProject.Controllers
     [Route("api/[controller]")]
     public class BuyerController : ControllerBase
     {
-        private readonly IBuyer _buyerRepository;
+        private readonly IBuyerService _buyerService;
         private readonly IMapper _mapper;
-        public BuyerController(IBuyer BuyerRepository, IMapper mapper)
+        public BuyerController(IBuyerService BuyerService, IMapper mapper)
         {
-            this._buyerRepository = BuyerRepository;
+            this._buyerService = BuyerService;
             _mapper = mapper;
         }
 
         [HttpGet]
         public async Task<IActionResult> GetBuyers()
         {
-            var buyers = await _buyerRepository.GetBuyers();
+            var buyers = await _buyerService.GetBuyersAsync();
 
             if (!ModelState.IsValid)
                 return BadRequest(ModelState);
@@ -35,7 +33,7 @@ namespace StoreApiProject.Controllers
         [HttpGet("{BuyerId}")]
         public async Task<IActionResult> GetBuyer(int BuyerId)
         {
-            var buyer = await _buyerRepository.GetBuyer(BuyerId);
+            var buyer = await _buyerService.GetBuyerAsync(BuyerId);
             return Ok(buyer);
         }
 
@@ -46,7 +44,7 @@ namespace StoreApiProject.Controllers
 
             var NewBuyer = _mapper.Map<Buyer>(BuyerCreate);
 
-            if (!await _buyerRepository.CreateBuyer(NewBuyer))
+            if (!await _buyerService.CreateBuyerAsync(NewBuyer))
             {
                 ModelState.AddModelError("", "Something went wrong while saving");
                 return StatusCode(500, ModelState);
@@ -63,7 +61,7 @@ namespace StoreApiProject.Controllers
 
             var UpdatedBuyer = _mapper.Map<Buyer>(BuyerUpdateDto);
 
-            if (!await _buyerRepository.EditBuyer(UpdatedBuyer))
+            if (!await _buyerService.EditBuyerAsync(UpdatedBuyer))
             {
                 ModelState.AddModelError("", "Something went wrong while updating the buyer");
                 return StatusCode(500, ModelState);
@@ -75,7 +73,7 @@ namespace StoreApiProject.Controllers
         [HttpDelete]
         public async Task<IActionResult> DeleteBuyer(int BuyerId)
         {
-            var DeletedBuyer = await _buyerRepository.DeleteBuyer(BuyerId);
+            var DeletedBuyer = await _buyerService.DeleteBuyerAsync(BuyerId);
             return Ok(DeletedBuyer);
         }
     }

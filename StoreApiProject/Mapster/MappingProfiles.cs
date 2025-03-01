@@ -1,9 +1,7 @@
 ﻿using AutoMapper;
 using Microsoft.EntityFrameworkCore;
-using StoreApiProject.Data;
 using StoreApiProject.DTOs;
-using StoreApiProject.Models;
-using StoreApiProject.Repository;
+using StoreApiProject.Domain.Models;
 
 namespace StoreApiProject.Mapster
 {

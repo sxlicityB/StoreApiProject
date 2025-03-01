@@ -1,5 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using StoreApiProject.Interfaces;
+using StoreApiProject.BLL.Interfaces;
 namespace StoreApiProject.Controllers
 {
     [ApiController]
@@ -18,7 +18,7 @@ namespace StoreApiProject.Controllers
         {
             for (int i = 0; i < CycleCount; i++)
             {
-                await _dataService.GenerateData();
+                await _dataService.GenerateDataAsync();
             }
             return Ok(new { message = "Mock data generated successfully!" });
         }
@@ -28,7 +28,7 @@ namespace StoreApiProject.Controllers
         {
             try
             {
-                await _dataService.ResetDatabase();
+                await _dataService.ResetDatabaseAsync();
                 return Ok("Database was sucessfully reset!");
             }
             catch (Exception ex)

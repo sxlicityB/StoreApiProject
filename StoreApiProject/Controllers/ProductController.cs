@@ -1,11 +1,10 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using StoreApiProject.Data;
-using StoreApiProject.Models;
+using StoreApiProject.Domain.Models;
 using Microsoft.EntityFrameworkCore;
-using StoreApiProject.Interfaces;
-using StoreApiProject.Repository;
+using StoreApiProject.BLL.Interfaces;
 using AutoMapper;
 using StoreApiProject.DTOs;
+using StoreApiProject.DAL.Interfaces;
 
 namespace StoreApiProject.Controllers
 {
@@ -13,18 +12,18 @@ namespace StoreApiProject.Controllers
     [Route("api/[controller]")]
     public class ProductController : ControllerBase
     {
-        private readonly IProduct _productRepository;
+        private readonly IProductService _productService;
         private readonly IMapper _mapper;
-        public ProductController(IProduct ProductRepository, IMapper mapper)
+        public ProductController(IProductService ProductService, IMapper mapper)
         {
-            this._productRepository = ProductRepository;
+            this._productService = ProductService;
             _mapper = mapper;
         }
 
         [HttpGet]
         public async Task<IActionResult> GetProducts()
         {
-            var products = await _productRepository.GetProducts();
+            var products = await _productService.GetProductsAsync();
 
             if (!ModelState.IsValid)
                 return BadRequest(ModelState);
@@ -35,7 +34,7 @@ namespace StoreApiProject.Controllers
         [HttpGet("{ProductId}")]
         public async Task<IActionResult> GetProduct(int ProductId)
         {
-            var product = await _productRepository.GetProduct(ProductId);
+            var product = await _productService.GetProductAsync(ProductId);
             return Ok(product);
         }
 
@@ -45,7 +44,7 @@ namespace StoreApiProject.Controllers
         {
             var NewProduct = _mapper.Map<Product>(ProductCreate);
 
-            if (!await _productRepository.CreateProduct(NewProduct))
+            if (!await _productService.CreateProductAsync(NewProduct))
             {
                 ModelState.AddModelError("", "Something went wrong while saving");
                 return StatusCode(500, ModelState);
@@ -62,7 +61,7 @@ namespace StoreApiProject.Controllers
 
             var UpdatedProduct = _mapper.Map<Product>(ProductUpdateDto);
 
-            if (!await _productRepository.EditProduct(UpdatedProduct))
+            if (!await _productService.EditProductAsync(UpdatedProduct))
             {
                 ModelState.AddModelError("", "Something went wrong while updating the buyer");
                 return StatusCode(500, ModelState);
@@ -74,7 +73,7 @@ namespace StoreApiProject.Controllers
         [HttpDelete]
         public async Task<IActionResult> DeleteProduct(int ProductId)
         {
-            var DeletedProduct = await _productRepository.DeleteProduct(ProductId);
+            var DeletedProduct = await _productService.DeleteProductAsync(ProductId);
             return Ok(DeletedProduct);
         }
     }

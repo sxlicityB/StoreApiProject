@@ -1,6 +1,6 @@
 ﻿using FluentValidation;
 using StoreApiProject.DTOs;
-using StoreApiProject.Models;
+
 
 namespace StoreApiProject.Validators
 {

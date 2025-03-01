@@ -1,12 +1,11 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using StoreApiProject.Data;
-using StoreApiProject.Models;
+using StoreApiProject.Domain.Models;
 using Microsoft.EntityFrameworkCore;
-using StoreApiProject.Interfaces;
-using StoreApiProject.Repository;
+using StoreApiProject.BLL.Interfaces;
 using AutoMapper;
 using StoreApiProject.DTOs;
 using System.Reflection.Metadata.Ecma335;
+using StoreApiProject.DAL.Interfaces;
 
 namespace StoreApiProject.Controllers
 {
@@ -14,15 +13,14 @@ namespace StoreApiProject.Controllers
     [Route("api/[controller]")]
     public class OrderController : ControllerBase
     {
-        private readonly IOrder _orderRepository;
+        private readonly IOrderService _orderService;
         private readonly IMapper _mapper;
-        private readonly AppDbContext _context;
-        private readonly IProduct _productRepository;
+        private readonly IProductService _productService;
 
-        public OrderController(AppDbContext context, IOrder OrderRepository, IBuyer BuyerRepository, IProduct ProductRepository, IMapper mapper)
+        public OrderController(IOrderService OrderService, IBuyerService BuyerService, IProductService ProductService, IMapper mapper)
         {
-            this._orderRepository = OrderRepository;
-            this._productRepository = ProductRepository;
+            this._orderService = OrderService;
+            this._productService = ProductService;
             _mapper = mapper;
         }
 
@@ -31,7 +29,7 @@ namespace StoreApiProject.Controllers
         [HttpGet]
         public async Task<IActionResult> GetOrders()
         {
-            var orders = await _orderRepository.GetOrders();
+            var orders = await _orderService.GetOrdersAsync();
             var mappedOrders = _mapper.Map<List<GetOrderDTO>>(orders);
 
             if (!ModelState.IsValid)
@@ -45,7 +43,7 @@ namespace StoreApiProject.Controllers
         [HttpGet("{OrderId}")]
         public async Task<IActionResult> GetOrder(int OrderId)
         {
-            var order = await _orderRepository.GetOrder(OrderId);
+            var order = await _orderService.GetOrderAsync(OrderId);
             var mappedOrder = _mapper.Map<GetOrderDTO>(order);
             return Ok(mappedOrder);
         }
@@ -61,7 +59,7 @@ namespace StoreApiProject.Controllers
 
             foreach (var orderProduct in newOrder.OrderProducts)
             {
-                var product = await _productRepository.GetProduct(orderProduct.ProductId);
+                var product = await _productService.GetProductAsync(orderProduct.ProductId);
                 if (product != null)
                     orderProduct.Product = product;
                 else
@@ -69,7 +67,7 @@ namespace StoreApiProject.Controllers
 
             }
 
-            if (!await _orderRepository.CreateOrder(newOrder))
+            if (!await _orderService.CreateOrderAsync(newOrder))
             {
                 ModelState.AddModelError("", "Something went wrong while saving");
                 return StatusCode(500, ModelState);
@@ -87,7 +85,7 @@ namespace StoreApiProject.Controllers
 
             var UpdatedOrder = _mapper.Map<Order>(OrderUpdateDto);
 
-            if (!await _orderRepository.EditOrder(UpdatedOrder))
+            if (!await _orderService.EditOrderAsync(UpdatedOrder))
             {
                 ModelState.AddModelError("", "Something went wrong while updating the order");
                 return StatusCode(500, ModelState);
@@ -99,7 +97,7 @@ namespace StoreApiProject.Controllers
         [HttpDelete]
         public async Task<IActionResult> DeleteOrder(int OrderId)
         {
-            var DeletedOrder = await _orderRepository.DeleteOrder(OrderId);
+            var DeletedOrder = await _orderService.DeleteOrderAsync(OrderId);
             return Ok(DeletedOrder);
         }
         

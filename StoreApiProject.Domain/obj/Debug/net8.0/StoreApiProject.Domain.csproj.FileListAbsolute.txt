@@ -1,0 +1,12 @@
+C:\prog\Backup\StoreApiProject\StoreApiProject.Domain\bin\Debug\net8.0\StoreApiProject.Domain.deps.json
+C:\prog\Backup\StoreApiProject\StoreApiProject.Domain\bin\Debug\net8.0\StoreApiProject.Domain.dll
+C:\prog\Backup\StoreApiProject\StoreApiProject.Domain\bin\Debug\net8.0\StoreApiProject.Domain.pdb
+C:\prog\Backup\StoreApiProject\StoreApiProject.Domain\obj\Debug\net8.0\StoreApiProject.Domain.GeneratedMSBuildEditorConfig.editorconfig
+C:\prog\Backup\StoreApiProject\StoreApiProject.Domain\obj\Debug\net8.0\StoreApiProject.Domain.AssemblyInfoInputs.cache
+C:\prog\Backup\StoreApiProject\StoreApiProject.Domain\obj\Debug\net8.0\StoreApiProject.Domain.AssemblyInfo.cs
+C:\prog\Backup\StoreApiProject\StoreApiProject.Domain\obj\Debug\net8.0\StoreApiProject.Domain.csproj.CoreCompileInputs.cache
+C:\prog\Backup\StoreApiProject\StoreApiProject.Domain\obj\Debug\net8.0\StoreApiProject.Domain.sourcelink.json
+C:\prog\Backup\StoreApiProject\StoreApiProject.Domain\obj\Debug\net8.0\StoreApiProject.Domain.dll
+C:\prog\Backup\StoreApiProject\StoreApiProject.Domain\obj\Debug\net8.0\refint\StoreApiProject.Domain.dll
+C:\prog\Backup\StoreApiProject\StoreApiProject.Domain\obj\Debug\net8.0\StoreApiProject.Domain.pdb
+C:\prog\Backup\StoreApiProject\StoreApiProject.Domain\obj\Debug\net8.0\ref\StoreApiProject.Domain.dll

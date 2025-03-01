@@ -1,5 +1,5 @@
-﻿using static StoreApiProject.Models.Order;
-using StoreApiProject.Models;
+﻿using static StoreApiProject.Domain.Models.Order;
+using StoreApiProject.Domain.Models;
 
 namespace StoreApiProject.DTOs
 {
