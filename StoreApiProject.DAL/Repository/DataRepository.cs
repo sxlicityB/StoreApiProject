@@ -3,6 +3,7 @@ using Microsoft.EntityFrameworkCore;
 using StoreApiProject.DAL.Data;
 using StoreApiProject.DAL.Interfaces;
 using StoreApiProject.Domain.Models;
+using StoreApiProject.Domain.Enums;
 
 namespace StoreApiProject.DAL.Repository
 {
@@ -30,7 +31,7 @@ namespace StoreApiProject.DAL.Repository
             int randomBuyerId = new Faker().Random.Number(minBuyerId, maxBuyerId);
             var randomBuyer = await _buyerRepository.GetBuyerAsync(randomBuyerId);
 
-            var randomStatus = new Faker().PickRandom<Order.OrderStatus>();
+            var randomStatus = new Faker().PickRandom<OrderStatus>();
 
             var orderProducts = await _productRepository.GetProductsAsync();
 

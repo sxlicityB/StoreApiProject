@@ -6,6 +6,7 @@ using AutoMapper;
 using StoreApiProject.DTOs;
 using System.Reflection.Metadata.Ecma335;
 using StoreApiProject.DAL.Interfaces;
+using StoreApiProject.Domain.Enums;
 
 namespace StoreApiProject.Controllers
 {
@@ -55,7 +56,7 @@ namespace StoreApiProject.Controllers
         {
 
             var newOrder = _mapper.Map<Order>(OrderCreate);
-            newOrder.Status = Order.OrderStatus.Pending;
+            newOrder.Status = OrderStatus.Pending;
 
             foreach (var orderProduct in newOrder.OrderProducts)
             {

@@ -1,5 +1,6 @@
 ﻿using static StoreApiProject.Domain.Models.Order;
 using StoreApiProject.Domain.Models;
+using StoreApiProject.Domain.Enums;
 
 namespace StoreApiProject.DTOs
 {
