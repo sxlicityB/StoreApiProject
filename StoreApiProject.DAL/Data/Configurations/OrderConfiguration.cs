@@ -14,5 +14,6 @@ internal class OrderConfiguration : IEntityTypeConfiguration<Order>
         builder.HasOne(o => o.Buyer)
         .WithMany(b => b.Orders)
         .HasForeignKey(o => o.BuyerId);
+
     }
 }

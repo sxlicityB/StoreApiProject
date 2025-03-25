@@ -62,7 +62,10 @@ namespace StoreApiProject.Controllers
             {
                 var product = await _productService.GetProductAsync(orderProduct.ProductId);
                 if (product != null)
+                {
                     orderProduct.Product = product;
+                    orderProduct.UnitPrice = product.Price;
+                }
                 else
                     throw new InvalidOperationException($"Product with ID {orderProduct.ProductId} not found.");
 
