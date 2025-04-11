@@ -11,7 +11,7 @@ using StoreApiProject.DAL.Data;
 namespace StoreApiProject.DAL.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20250219161341_InitialCreate")]
+    [Migration("20250409180827_InitialCreate")]
     partial class InitialCreate
     {
         /// <inheritdoc />
@@ -72,6 +72,10 @@ namespace StoreApiProject.DAL.Migrations
                     b.Property<int>("Quantity")
                         .HasColumnType("int");
 
+                    b.Property<decimal>("UnitPrice")
+                        .HasPrecision(18, 2)
+                        .HasColumnType("decimal(18,2)");
+
                     b.HasKey("OrderId", "ProductId");
 
                     b.HasIndex("ProductId");
@@ -94,6 +98,7 @@ namespace StoreApiProject.DAL.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<decimal>("Price")
+                        .HasPrecision(18, 2)
                         .HasColumnType("decimal(18,2)");
 
                     b.Property<string>("Type")
