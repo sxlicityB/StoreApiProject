@@ -4,6 +4,7 @@ using Microsoft.EntityFrameworkCore;
 using StoreApiProject.BLL.Interfaces;
 using AutoMapper;
 using StoreApiProject.DTOs;
+using StoreApiProject.DAL.Projections;
 
 namespace StoreApiProject.Controllers
 {
@@ -19,7 +20,7 @@ namespace StoreApiProject.Controllers
             _mapper = mapper;
         }
 
-        [HttpGet]
+        [HttpGet("Get all buyers")]
         public async Task<IActionResult> GetBuyers()
         {
             var buyers = await _buyerService.GetBuyersAsync();
@@ -35,6 +36,13 @@ namespace StoreApiProject.Controllers
         {
             var buyer = await _buyerService.GetBuyerAsync(BuyerId);
             return Ok(buyer);
+        }
+
+        [HttpGet("Get buyers with orders")]
+        public async Task<List<BuyerWithOrdersProjection>> GetBuyerWithOrders()
+        {
+            var buyers = await _buyerService.GetBuyerWithOrdersAsync();
+            return buyers;
         }
 
         //POST endpoint
