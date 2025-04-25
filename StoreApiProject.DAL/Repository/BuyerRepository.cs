@@ -35,11 +35,18 @@ public class BuyerRepository : IBuyerRepository
             Orders = b.Orders.Select(o => new OrderProjection
             {
                 OrderId = o.OrderId,
-                OrderProducts = o.OrderProducts,
-                Status = o.Status
+                Status = o.Status,
+                OrderProducts = o.OrderProducts.Select(op => new OrderProductProjection
+                {
+                    OrderId = op.OrderId,
+                    ProductId = op.ProductId,
+                    Product = op.Product,
+                    Quantity = op.Quantity,
+                    UnitPrice = op.UnitPrice
+
+                }).ToList()
             }).ToList()
-        })
-        .ToListAsync();
+        }).ToListAsync();
     }
 
     public async Task<bool> CreateBuyerAsync(Buyer buyer)

@@ -1,7 +1,6 @@
-﻿namespace StoreApiProject.DTOs
+﻿namespace StoreApiProject.DTOs;
+
+public class CreateBuyerDTO
 {
-    public class CreateBuyerDTO
-    {
-        public string Name { get; set; }
-    }
+    public string Name { get; set; }
 }
