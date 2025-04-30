@@ -9,4 +9,5 @@ Task<bool> CreateOrderAsync(Order order);
 Task<bool> UpdateOrderAsync();
 Task<bool> EditOrderAsync(Order order);
 Task<bool> DeleteOrderAsync(int id);
+Task<bool> ValidateAndProcessOrderAsync(Order order);
 }

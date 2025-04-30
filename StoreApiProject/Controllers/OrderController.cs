@@ -58,20 +58,7 @@ public class OrderController : ControllerBase
         var newOrder = _mapper.Map<Order>(OrderCreate);
         newOrder.Status = OrderStatus.Pending;
 
-        foreach (var orderProduct in newOrder.OrderProducts)
-        {
-            var product = await _productService.GetProductAsync(orderProduct.ProductId);
-            if (product != null)
-            {
-                orderProduct.Product = product;
-                orderProduct.UnitPrice = product.Price;
-            }
-            else
-                throw new InvalidOperationException($"Product with ID {orderProduct.ProductId} not found.");
-
-        }
-
-        if (!await _orderService.CreateOrderAsync(newOrder))
+        if (!await _orderService.ValidateAndProcessOrderAsync(newOrder))
         {
             ModelState.AddModelError("", "Something went wrong while saving");
             return StatusCode(500, ModelState);

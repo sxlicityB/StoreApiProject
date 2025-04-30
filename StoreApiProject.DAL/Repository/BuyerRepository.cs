@@ -32,18 +32,17 @@ public class BuyerRepository : IBuyerRepository
         {
             BuyerId = b.BuyerId,
             Name = b.Name,
-            Orders = b.Orders.Select(o => new OrderProjection
+            Orders = b.Orders.Select(o => new OrderProjection                       //load up order as projection
             {
                 OrderId = o.OrderId,
                 Status = o.Status,
-                OrderProducts = o.OrderProducts.Select(op => new OrderProductProjection
+                OrderProducts = o.OrderProducts.Select(op => new OrderProductProjection                 //load up OrderProduct as projection correctly
                 {
                     OrderId = op.OrderId,
                     ProductId = op.ProductId,
-                    Product = op.Product,
+                    Product = op.Product,       //this will load up OrderProducts as well but I think complicating repository just for Null to not show up is exscessive
                     Quantity = op.Quantity,
                     UnitPrice = op.UnitPrice
-
                 }).ToList()
             }).ToList()
         }).ToListAsync();
