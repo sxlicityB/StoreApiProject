@@ -8,6 +8,12 @@ using AutoMapper;
 using Microsoft.Extensions.DependencyInjection;
 using FluentValidation;
 using FluentValidation.AspNetCore;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.IdentityModel.Tokens;
+using StoreApiProject.Authentication;
+using System.Text;
+using StoreApiProject.Authentication.Services;
+using StoreApiProject.Authentication.Interfaces;
 
 
 var builder = WebApplication.CreateBuilder(args);
@@ -20,10 +26,43 @@ builder.Configuration                                                           
 
 
 
+var jwtSettings = builder.Configuration.GetSection("JwtSettings").Get<JwtSettings>();       //register and configure JWT auth
+
+builder.Services.AddAuthentication("Bearer")
+    .AddJwtBearer("Bearer", options =>
+    {
+        options.TokenValidationParameters = new TokenValidationParameters
+        {
+            ValidateIssuer = true,
+            ValidateAudience = true,
+            ValidateLifetime = true,
+            ValidateIssuerSigningKey = true,
+            ValidIssuer = jwtSettings.Issuer,
+            ValidAudience = jwtSettings.Audience,
+            IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(jwtSettings.SecretKey))
+        };
+    });
+
+builder.Services.AddAuthorization();
+
+
+
+
+
 // Add services to the project.
+
 builder.Services.AddControllers();
 builder.Services.AddBLLServices();                       // DAL repos registration is referenced in BLL
 builder.Services.AddAutoMapper(typeof(MappingProfiles));
+
+//JWT
+builder.Services.Configure<JwtSettings>(builder.Configuration.GetSection("JwtSettings"));
+builder.Services.AddScoped<JwtService>();
+builder.Services.AddScoped<JwtService>();                // JWT auth DI
+builder.Services.AddScoped<IAuthService, AuthService>(); // auth service DI
+
+
+
 
 
 
@@ -50,6 +89,11 @@ if (app.Environment.IsDevelopment())
 app.UseHttpsRedirection();
 
 app.UseAuthorization();
+
+app.UseRouting();
+
+app.UseAuthentication();  // enable JWT reading 
+app.UseAuthorization();   // enable access control
 
 app.MapControllers();
 
