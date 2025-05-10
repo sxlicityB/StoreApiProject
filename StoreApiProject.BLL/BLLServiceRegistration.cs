@@ -19,6 +19,7 @@ namespace StoreApiProject.BLL
             services.AddScoped<IProductService, ProductService>();
             services.AddScoped<IOrderService, OrderService>();
             services.AddScoped<IDataService, DataService>();
+            services.AddScoped<IAppUserService, AppUserService>();
 
             services.AddDALServces();
         }
