@@ -87,8 +87,6 @@ if (app.Environment.IsDevelopment())
 
 app.UseHttpsRedirection();
 
-app.UseAuthorization();
-
 app.UseRouting();
 
 app.UseAuthentication();  // enable JWT reading 

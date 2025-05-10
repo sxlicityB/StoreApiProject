@@ -10,10 +10,12 @@ namespace StoreApiProject.Authentication.Services;
 public class AuthService : IAuthService
 {
     private readonly IConfiguration _configuration;
+    private readonly JwtService _jwtService;
 
-    public AuthService(IConfiguration configuration)
+    public AuthService(IConfiguration configuration, JwtService jwtService)
     {
         _configuration = configuration;
+        _jwtService = jwtService;
     }
 
     public async Task<string> AuthenticateAsync(string username, string password)
@@ -22,28 +24,6 @@ public class AuthService : IAuthService
         if (username != "admin" || password != "password123")
             return null;
 
-
-
-        var key = Encoding.UTF8.GetBytes(_configuration["JwtSettings:SecretKey"]);
-
-        var credentials = new SigningCredentials(new SymmetricSecurityKey(key), SecurityAlgorithms.HmacSha256Signature);
-
-        var tokenDescriptor = new SecurityTokenDescriptor
-        {
-            Subject = new ClaimsIdentity(new[]
-            {
-                new Claim(ClaimTypes.Name, username),
-                new Claim(ClaimTypes.Role, "Admin")
-            }),
-            Expires = DateTime.UtcNow.AddMinutes(_configuration.GetValue<int>("JwtSettings:ExpiryMinutes")),
-            SigningCredentials = credentials,
-            Issuer = _configuration["JwtSettings:Issuer"],
-            Audience = _configuration["JwtSettings:Audience"]
-        };
-
-        var tokenHandler = new JsonWebTokenHandler();
-        var token = tokenHandler.CreateToken(tokenDescriptor);
-
-        return tokenHandler.CreateToken(token);
+        return await _jwtService.GenerateTokenAsync(username);
     }
 }
