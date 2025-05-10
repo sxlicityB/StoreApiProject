@@ -26,9 +26,9 @@ builder.Configuration                                                           
 
 
 
-var jwtSettings = builder.Configuration.GetSection("JwtSettings").Get<JwtSettings>();       //register and configure JWT auth
+var jwtSettings = builder.Configuration.GetSection("JwtSettings").Get<JwtSettings>();       
 
-builder.Services.AddAuthentication("Bearer")
+builder.Services.AddAuthentication("Bearer")                                                //register and configure JWT auth
     .AddJwtBearer("Bearer", options =>
     {
         options.TokenValidationParameters = new TokenValidationParameters
@@ -57,7 +57,6 @@ builder.Services.AddAutoMapper(typeof(MappingProfiles));
 
 //JWT
 builder.Services.Configure<JwtSettings>(builder.Configuration.GetSection("JwtSettings"));
-builder.Services.AddScoped<JwtService>();
 builder.Services.AddScoped<JwtService>();                // JWT auth DI
 builder.Services.AddScoped<IAuthService, AuthService>(); // auth service DI
 
