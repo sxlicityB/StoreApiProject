@@ -4,6 +4,9 @@ using StoreApiProject.DAL.Data;
 using StoreApiProject.DAL.Interfaces;
 using StoreApiProject.Domain.Models;
 using StoreApiProject.Domain.Enums;
+using System.Security.Cryptography;
+using StoreApiProject.Domain.Enums;
+using System.Data;
 
 namespace StoreApiProject.DAL.Repository;
 
@@ -12,13 +15,15 @@ public class DataRepository : IDataRepository
     private readonly IOrderRepository _orderRepository;
     private readonly IBuyerRepository _buyerRepository;
     private readonly IProductRepository _productRepository;
+    private readonly IAppUserRepository _appUserRepository;
     private readonly AppDbContext _context;
 
-    public DataRepository(IOrderRepository orderRepository, IBuyerRepository buyerRepository, IProductRepository productRepository, AppDbContext context)
+    public DataRepository(IOrderRepository orderRepository, IBuyerRepository buyerRepository, IProductRepository productRepository, IAppUserRepository appUserRepository, AppDbContext context)
     {
         _orderRepository = orderRepository;
         _buyerRepository = buyerRepository;
         _productRepository = productRepository;
+        _appUserRepository = appUserRepository;
         _context = context;
     }
 
@@ -58,10 +63,20 @@ public class DataRepository : IDataRepository
     public async Task GenerateBuyerAsync()
     {
 
+        var users = await _appUserRepository.GetUsersAsync();
+        int minUserId = users.Min(u => u.UserId);
+        int maxUserId = users.Max(u => u.UserId);
+
+        int randomUserId = new Faker().Random.Number(minUserId, maxUserId);
+
+        var randomUser = await _appUserRepository.GetUserAsync(randomUserId);
+
         var faker = new Faker<Buyer>()
             .StrictMode(false)
             .RuleFor(b => b.Name, new Faker().Name.FullName())
-            .RuleFor(b => b.Orders, new List<Order>());
+            .RuleFor(b => b.Orders, new List<Order>())
+            .RuleFor(b => b.UserId, randomUserId)
+            .RuleFor(b => b.User, randomUser);
 
         await _buyerRepository.CreateBuyerAsync(faker.Generate());
     }
@@ -77,6 +92,19 @@ public class DataRepository : IDataRepository
             .RuleFor(p => p.Price, Convert.ToDecimal(new Faker().Commerce.Price(1, 100)));
 
         await _productRepository.CreateProductAsync(faker.Generate());
+    }
+
+    public async Task GenerateAppUserAsync()
+    {
+        var faker = new Faker<AppUser>()
+            .StrictMode(false)
+            .RuleFor(u => u.Email, new Faker().Internet.Email())
+            .RuleFor(u => u.Username, new Faker().Internet.UserName())
+            .RuleFor(u => u.PasswordHash, new Faker().Internet.Password())
+            .RuleFor(u => u.Role, AppUserRole.User.ToString);
+
+        await _appUserRepository.CreateUserAsync(faker.Generate());
+
     }
 
     public async Task GenerateDataAsync()

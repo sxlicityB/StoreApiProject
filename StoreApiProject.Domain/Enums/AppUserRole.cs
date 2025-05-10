@@ -5,11 +5,9 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace StoreApiProject.Domain.Enums;
-public enum OrderStatus
+
+public enum AppUserRole
 {
-    Pending,
-    Processing,
-    Shipped,
-    Delivered,
-    Cancelled
+    User,
+    Admin
 }

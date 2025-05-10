@@ -14,4 +14,5 @@ public partial class AppDbContext
     public DbSet<Product> Products { get; set; }
     public DbSet<Order> Orders { get; set; }
     public DbSet<OrderProduct> OrderProducts { get; set; }
+    public DbSet<AppUser> AppUsers { get; set; }
 }

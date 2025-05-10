@@ -2,6 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using StoreApiProject.DAL.Data;
 
@@ -10,9 +11,11 @@ using StoreApiProject.DAL.Data;
 namespace StoreApiProject.DAL.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    partial class AppDbContextModelSnapshot : ModelSnapshot
+    [Migration("20250510145104_AddAppUserAndBuyerRelation")]
+    partial class AddAppUserAndBuyerRelation
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -46,7 +49,7 @@ namespace StoreApiProject.DAL.Migrations
 
                     b.HasKey("UserId");
 
-                    b.ToTable("AppUsers");
+                    b.ToTable("AppUser");
                 });
 
             modelBuilder.Entity("StoreApiProject.Domain.Models.Buyer", b =>
