@@ -6,9 +6,12 @@ using System.Threading.Tasks;
 
 namespace StoreApiProject.Domain.Models;
 
-internal class User
+public class AppUser
 {
-    public string Username { get; set; }
-    public string Password { get; set; } // Normally hashed
-    public string Role { get; set; }
+    public int UserId { get; set; }
+    public string Email { get; set; } = null!;
+    public string? Username { get; set; }
+    public string PasswordHash { get; set; } = null!;
+    public string Role { get; set; } = "User";
+    public Buyer? Buyer { get; set; }                   // navigational 
 }
