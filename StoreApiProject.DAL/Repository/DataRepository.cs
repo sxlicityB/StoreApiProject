@@ -109,6 +109,7 @@ public class DataRepository : IDataRepository
 
     public async Task GenerateDataAsync()
     {
+        await GenerateAppUserAsync();
         await GenerateBuyerAsync();
         await GenerateProductAsync();
         await GenerateOrderAsync();
@@ -119,10 +120,12 @@ public class DataRepository : IDataRepository
         _context.Orders.RemoveRange(_context.Orders);
         _context.Products.RemoveRange(_context.Products);
         _context.Buyers.RemoveRange(_context.Buyers);
+        _context.AppUsers.RemoveRange(_context.AppUsers);
         await _context.SaveChangesAsync();
 
         await _context.Database.ExecuteSqlRawAsync("DBCC CHECKIDENT ('Orders', RESEED, 0)");
         await _context.Database.ExecuteSqlRawAsync("DBCC CHECKIDENT ('Buyers', RESEED, 0)");
         await _context.Database.ExecuteSqlRawAsync("DBCC CHECKIDENT ('Products', RESEED, 0)");
+        await _context.Database.ExecuteSqlRawAsync("DBCC CHECKIDENT ('AppUsers', RESEED, 0)");
     }
 }

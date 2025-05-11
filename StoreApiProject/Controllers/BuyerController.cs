@@ -20,7 +20,7 @@ public class BuyerController : ControllerBase
         _mapper = mapper;
     }
 
-    [HttpGet("Get all buyers")]
+    [HttpGet("Get_all_buyers")]
     public async Task<IActionResult> GetBuyers()
     {
         var buyers = await _buyerService.GetBuyersAsync();
@@ -38,7 +38,7 @@ public class BuyerController : ControllerBase
         return Ok(buyer);
     }
 
-    [HttpGet("Get buyers with orders")]
+    [HttpGet("Get_buyers_with_orders")]
     public async Task<List<BuyerWithOrdersProjection>> GetBuyerWithOrders()
     {
         var buyers = await _buyerService.GetBuyerWithOrdersAsync();

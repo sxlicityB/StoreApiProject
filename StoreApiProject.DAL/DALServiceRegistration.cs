@@ -9,16 +9,16 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace StoreApiProject.DAL
+namespace StoreApiProject.DAL;
+
+public static class DALServiceRegistration
 {
-    public static class DALServiceRegistration
+    public static void AddDALServces(this IServiceCollection services) 
     {
-        public static void AddDALServces(this IServiceCollection services) 
-        {
-            services.AddScoped<IBuyerRepository, BuyerRepository>();
-            services.AddScoped<IDataRepository, DataRepository>();
-            services.AddScoped<IOrderRepository, OrderRepository>();
-            services.AddScoped<IProductRepository, ProductRepository>();
-        }
+        services.AddScoped<IBuyerRepository, BuyerRepository>();
+        services.AddScoped<IDataRepository, DataRepository>();
+        services.AddScoped<IOrderRepository, OrderRepository>();
+        services.AddScoped<IProductRepository, ProductRepository>();
+        services.AddScoped<IAppUserRepository, AppUserRepository>();
     }
 }

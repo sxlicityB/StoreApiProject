@@ -4,7 +4,6 @@ using Microsoft.EntityFrameworkCore;
 using StoreApiProject.BLL.Interfaces;
 using AutoMapper;
 using StoreApiProject.DTOs;
-using StoreApiProject.DAL.Interfaces;
 
 namespace StoreApiProject.Controllers;
 

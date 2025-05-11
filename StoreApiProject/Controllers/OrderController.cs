@@ -5,7 +5,6 @@ using StoreApiProject.BLL.Interfaces;
 using AutoMapper;
 using StoreApiProject.DTOs;
 using System.Reflection.Metadata.Ecma335;
-using StoreApiProject.DAL.Interfaces;
 using StoreApiProject.Domain.Enums;
 
 namespace StoreApiProject.Controllers;

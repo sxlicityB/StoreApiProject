@@ -7,14 +7,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace StoreApiProject.DAL
+namespace StoreApiProject.DAL;
+
+public static class DbContextRegistration
 {
-    public static class DbContextRegistration
+    public static void AddDbContext(this IServiceCollection services, string connectionString)
     {
-        public static void AddDbContext(this IServiceCollection services, string connectionString)
-        {
-            services.AddDbContext<AppDbContext>(options =>
-                options.UseSqlServer(connectionString));
-        }
+        services.AddDbContext<AppDbContext>(options =>
+            options.UseSqlServer(connectionString));
     }
 }

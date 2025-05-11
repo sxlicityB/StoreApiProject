@@ -1,6 +1,6 @@
 ﻿using StoreApiProject.Domain.Models;
 
-namespace StoreApiProject.DAL.Interfaces;
+namespace StoreApiProject.BLL.Interfaces;
 
 public interface IOrderService { 
 Task<ICollection<Order>> GetOrdersAsync();
