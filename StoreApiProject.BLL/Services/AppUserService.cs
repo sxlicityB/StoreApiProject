@@ -14,7 +14,7 @@ public class AppUserService : IAppUserService
     private readonly IAppUserRepository _appUserRepository;
     public AppUserService(IAppUserRepository userRepository)
     {
-        userRepository = _appUserRepository;
+        _appUserRepository = userRepository;
     }
     public async Task<ICollection<AppUser>> GetUsersAsync()
     {
